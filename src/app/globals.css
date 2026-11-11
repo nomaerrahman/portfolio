@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Design tokens (HSL triplets) ---------- */
+:root {
+  --bg: 40 20% 97%;
+  --surface: 40 18% 100%;
+  --elevated: 40 14% 93%;
+  --border: 30 8% 84%;
+  --fg: 240 10% 8%;
+  --muted: 240 4% 40%;
+  --accent: 14 90% 52%;
+  --accent-fg: 0 0% 100%;
+  --corporate: 218 85% 52%;
+  --academic: 38 92% 42%;
+  --startup: 14 90% 52%;
+  --web: 165 75% 34%;
+  --grid-line: 240 10% 8% / 0.05;
+  color-scheme: light;
+}
+.dark {
+  --bg: 240 8% 4%;
+  --surface: 240 7% 7%;
+  --elevated: 240 6% 11%;
+  --border: 240 5% 17%;
+  --fg: 40 20% 95%;
+  --muted: 240 5% 62%;
+  --accent: 16 100% 62%;
+  --accent-fg: 240 10% 6%;
+  --corporate: 214 100% 68%;
+  --academic: 42 95% 62%;
+  --startup: 16 100% 62%;
+  --web: 160 70% 52%;
+  --grid-line: 0 0% 100% / 0.04;
+  color-scheme: dark;
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: hsl(var(--accent) / 0.3); }
+  :focus-visible { outline: 2px solid hsl(var(--accent)); outline-offset: 3px; border-radius: 6px; }
+}
+
+/* ---------- Type scale & layout rhythm ---------- */
+@layer components {
+  .t-display { font-size: clamp(2.6rem, 5.6vw, 5rem); line-height: 1; letter-spacing: -0.045em; font-weight: 600; }
+  .t-h1 { font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1.04; letter-spacing: -0.035em; font-weight: 600; }
+  .t-h2 { font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; }
+  .t-lead { font-size: clamp(1.05rem, 1.25vw, 1.2rem); line-height: 1.65; color: hsl(var(--muted)); }
+  .t-eyebrow { font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: hsl(var(--muted)); }
+  .section { position: relative; scroll-margin-top: 6rem; padding-block: 5rem; }
+  @media (min-width: 768px) { .section { padding-block: 7rem; } }
+  .glass {
+    background: hsl(var(--surface) / 0.6);
+    border: 1px solid hsl(var(--fg) / 0.08);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+  .card {
+    @apply rounded-3xl border border-border bg-surface/60 transition-colors duration-300;
+  }
+  .card:hover { border-color: hsl(var(--fg) / 0.22); }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--grid-line)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--grid-line)) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .mask-fade-y { mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent); }
+  .mask-fade-x { mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+  .text-gradient {
+    background: linear-gradient(110deg, hsl(var(--fg)) 30%, hsl(var(--accent)) 50%, hsl(var(--fg)) 70%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
+
+/* Noise overlay */
+.noise::after {
+  content: ""; position: fixed; inset: 0; z-index: 40; pointer-events: none; opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
