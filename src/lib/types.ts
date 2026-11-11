@@ -78,7 +78,7 @@ export interface AcademicWork {
   id: string;
   kind: AcademicKind;
   title: string;
-  /** Module name and code, e.g. "Big Data Analytics (CS5800)" */
+  /** Module name, e.g. "Distributed Data Analysis" (no module codes) */
   module?: string;
   year: string;
   /** Optional: show only marks you are happy to share, e.g. "First", "Distinction", "78%". */

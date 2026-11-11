@@ -10,7 +10,7 @@ import type { Degree } from "@/lib/types";
 export const degrees: Degree[] = [
   {
     id: "msc",
-    title: "MSc Data Science & AI",
+    title: "MSc Data Science and Analytics",
     institution: "Brunel University London",
     status: "In progress",
     note: "Taught modules 2025–26, followed by a paid placement year as a Junior Data Engineer at Carrot Soft (2026–27).",
@@ -20,7 +20,7 @@ export const degrees: Degree[] = [
         id: "readmission-prediction-spark",
         kind: "Group coursework",
         title: "Predicting 30-day diabetic readmission with Random Forest in R and Spark",
-        module: "CS5811 Distributed Data Analysis",
+        module: "Distributed Data Analysis",
         year: "2025–26",
         summary:
           "Can a diabetic patient's readmission within 30 days be predicted from their hospital stay, and what drives the risk? Using 101,766 encounters from 130 US hospitals, I built a class-balanced Random Forest in R (AUC 0.651) and re-implemented it in Spark MLlib, which matched it (AUC 0.645) and trained 3.2× faster on the same hardware. Both found prior inpatient visits to be the strongest predictor. My part was the Random Forest and its Spark version, compared against four teammates' models on the same patient-level split.",
@@ -55,7 +55,6 @@ export const degrees: Degree[] = [
         id: "lms-attainment-proposal",
         kind: "Research proposal",
         title: "Which LMS features actually predict student attainment?",
-        module: "CS5804",
         year: "2025–26",
         summary:
           "A research proposal for finding which learning-platform features predict grades on their own, rather than just reflecting how much a student clicks overall. It designs engineered engagement features, checks multicollinearity (VIF, Lasso), compares Random Forest, XGBoost and a small neural network with Bayesian tuning and macro-F1, and includes a 17-week project plan.",
