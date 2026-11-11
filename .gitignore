@@ -1,7 +1,17 @@
-node_modules
-.next
-out
-.env*.local
+# Dependencies
+/node_modules
+
+# Next.js Build & Export Outputs
+/.next/
+/out/
 *.tsbuildinfo
 next-env.d.ts
+
+# Environment Variables & Secrets (Ignore ALL .env files)
+.env
+.env.*
+!.env.example
+
+# Vercel Cache & OS Files
+/.vercel
 .DS_Store
