@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-two-gray-53.vercel.app"),
   title: `${profile.name} · Data Engineer & Founder`,
   description:
-    "Nom: data engineer, MSc Data Science & AI researcher at Brunel University London, web developer and founder of HypeSpark.",
+    "Nom: data engineer, MSc Data Science and Analytics student at Brunel University London, web developer and founder of HypeSpark.",
   openGraph: {
     title: `${profile.name} · Data Engineer & Founder`,
     description: "Data engineering, analytics and web projects, plus HypeSpark.",

@@ -5,7 +5,7 @@ export const profile = {
   name: "Nomaer Naiem",
   shortName: "Nom",
   handle: "nomaerrahman",
-  degree: "MSc Data Science & AI",
+  degree: "MSc Data Science and Analytics",
   university: "Brunel University London",
   location: "London, UK",
   email: "hello@example.com", // TODO: your public contact email
@@ -34,7 +34,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: "2025",
-    title: "MSc Data Science & AI",
+    title: "MSc Data Science and Analytics",
     org: "Brunel University London",
     track: "academic",
     description: "Data engineering, machine learning and AI, alongside a paid placement year in industry.",
