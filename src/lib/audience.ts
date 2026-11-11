@@ -72,7 +72,7 @@ export const AUDIENCES: AudienceConfig[] = [
     stats: [
       { value: "128", label: "Back-test forecasts scored" },
       { value: "4,500", label: "Simulated pharmacy days" },
-      { value: "MSc", label: "Data Science & AI, Brunel" },
+      { value: "6", label: "MSc coursework pieces" },
     ],
   },
   {

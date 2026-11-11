@@ -72,7 +72,7 @@ export interface Project {
   };
 }
 
-export type AcademicKind = "Dissertation" | "Final-year project" | "Coursework" | "Group project" | "Lab report";
+export type AcademicKind = "Dissertation" | "Final-year project" | "Coursework" | "Group coursework" | "Report" | "Essay" | "Research proposal";
 
 export interface AcademicWork {
   id: string;
@@ -87,6 +87,8 @@ export interface AcademicWork {
   skills: string[];
   /** PDF in /public/academic/<degree>/ */
   pdfUrl?: string;
+  /** Extra documents for the same piece, e.g. a supporting file or appendix. */
+  extraPdfs?: { label: string; url: string }[];
   repoUrl?: string;
   /** Show at the top of its degree with more space (e.g. the dissertation). */
   highlight?: boolean;
@@ -99,6 +101,8 @@ export interface Degree {
   period?: string;
   status: "In progress" | "Completed";
   note?: string;
+  /** Shown as a line under the works, e.g. "Dissertation in progress". */
+  upcoming?: string;
   works: AcademicWork[];
 }
 
