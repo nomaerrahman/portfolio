@@ -2,6 +2,8 @@
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AudienceSwitcher } from "./audience-switcher";
 import { useTheme } from "@/components/providers/theme-provider";
@@ -11,9 +13,10 @@ import { ease, spring } from "@/components/motion/presets";
 import { cn } from "@/lib/utils";
 
 /** Tracks which section is currently in view, for the active nav indicator. */
-function useActiveSection() {
+function useActiveSection(enabled: boolean) {
   const [active, setActive] = useState<SectionId | null>(null);
   useEffect(() => {
+    if (!enabled) return setActive(null);
     const els = SECTION_ORDER.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     const io = new IntersectionObserver(
       (entries) => {
@@ -24,14 +27,25 @@ function useActiveSection() {
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, []);
+  }, [enabled]);
   return active;
 }
 
 export function Navbar() {
   const { theme, toggle } = useTheme();
   const { scrollY, scrollYProgress } = useScroll();
-  const active = useActiveSection();
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+  const onProjects = pathname.startsWith("/projects");
+  const active = useActiveSection(onHome);
+  /** Nav items: "Work" becomes the Projects page; other items are homepage anchors. */
+  const items = SECTION_ORDER.map((id) =>
+    id === "work"
+      ? { key: id, href: "/projects", label: "Projects", current: onProjects || (onHome && active === "work") }
+      : { key: id, href: onHome ? `#${id}` : `/#${id}`, label: SECTION_LABELS[id], current: onHome && active === id }
+  );
+
+  useEffect(() => setOpen(false), [pathname]);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
@@ -57,7 +71,7 @@ export function Navbar() {
             scrolled ? "glass shadow-[0_8px_30px_-12px_rgba(0,0,0,0.35)]" : "border border-transparent"
           )}
         >
-          <a href="#top" className="group flex items-center gap-2.5 pl-1" aria-label="Back to top">
+          <Link href={onHome ? "#top" : "/"} className="group flex items-center gap-2.5 pl-1" aria-label={onHome ? "Back to top" : "Home"}>
             <span className="grid h-8 w-8 place-items-center rounded-full bg-fg font-mono text-xs font-bold text-bg transition-colors duration-300 group-hover:bg-accent group-hover:text-accent-fg">
               N
             </span>
@@ -65,26 +79,27 @@ export function Navbar() {
               <span className="text-sm font-semibold tracking-tight">{profile.shortName}</span>
               <span className="font-mono text-[10px] text-muted">@{profile.handle}</span>
             </span>
-          </a>
+          </Link>
 
           <AudienceSwitcher className="hidden lg:flex" />
 
           <div className="flex items-center gap-1">
             <ul className="mr-1 hidden items-center xl:flex">
-              {SECTION_ORDER.map((id) => (
-                <li key={id} className="relative">
-                  <a
-                    href={`#${id}`}
+              {items.map((it) => (
+                <li key={it.key} className="relative">
+                  <Link
+                    href={it.href}
+                    aria-current={it.current ? "page" : undefined}
                     className={cn(
                       "relative block rounded-full px-3 py-1.5 text-sm transition-colors duration-200",
-                      active === id ? "text-fg" : "text-muted hover:text-fg"
+                      it.current ? "text-fg" : "text-muted hover:text-fg"
                     )}
                   >
-                    {active === id && (
+                    {it.current && (
                       <motion.span layoutId="nav-active" className="absolute inset-0 -z-10 rounded-full bg-elevated" transition={spring.snappy} />
                     )}
-                    {SECTION_LABELS[id]}
-                  </a>
+                    {it.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -132,19 +147,19 @@ export function Navbar() {
               <p className="t-eyebrow px-2 pb-2 pt-1">View as</p>
               <AudienceSwitcher compact className="mb-3 w-full" />
             </div>
-            {SECTION_ORDER.map((id, i) => (
-              <a
-                key={id}
-                href={`#${id}`}
+            {items.map((it, i) => (
+              <Link
+                key={it.key}
+                href={it.href}
                 onClick={() => setOpen(false)}
                 className={cn(
                   "flex items-center justify-between rounded-2xl px-4 py-3 text-lg font-medium transition-colors hover:bg-elevated",
-                  active === id && "bg-elevated"
+                  it.current && "bg-elevated"
                 )}
               >
-                {SECTION_LABELS[id]}
+                {it.label}
                 <span className="font-mono text-xs text-muted">0{i + 1}</span>
-              </a>
+              </Link>
             ))}
           </motion.div>
         )}

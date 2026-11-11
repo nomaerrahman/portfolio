@@ -2,9 +2,9 @@ import { cn } from "@/lib/utils";
 
 export const CATEGORY_TONE: Record<string, string> = {
   "Data Engineering": "corporate",
+  "Data Science & Analytics": "academic",
   "Full-Stack / Web": "web",
-  "Academic / AI": "academic",
-  "Startup Ventures": "startup",
+  "Client Work": "startup",
 };
 const TONES = CATEGORY_TONE;
 

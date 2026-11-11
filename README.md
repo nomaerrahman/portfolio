@@ -13,6 +13,22 @@ npm run dev                  # http://localhost:3000
 
 Deploy: push to GitHub and import into Vercel. No other setup needed.
 
+## Projects: adding a new one
+
+The homepage shows 4 highlights plus an archive card; every project lives at **`/projects`**
+(search, category filters, grid/list views, shareable URLs like `/projects?category=Client%20Work&view=list`)
+and gets its own case-study page at **`/projects/<slug>`** (statically generated, with its own metadata).
+
+To add a project:
+
+1. Copy any file in `src/data/projects/`, rename it to your slug and fill it in.
+2. Optional: put images in `public/projects/<slug>/` and set `cover` / `gallery` (WebP, ~1440px wide).
+   Without a cover, a branded generative cover is used.
+3. Import it in `src/data/projects/index.ts`.
+4. To show it on the homepage, give it `featured: 1–4` (lower = earlier).
+
+Web projects with a `links.demo` URL get a click-to-load live preview on their case-study page.
+
 ## Hero copy variants
 
 Three positioning options live in `src/data/hero.ts`. Preview any of them on the running site with
@@ -50,17 +66,21 @@ src/
 │  ├─ beyond/           ActivityCard · ChessBoard · illustrations
 │  ├─ layout/           Navbar · AudienceSwitcher · Footer
 │  ├─ sections/         Hero · Work · Research · Startup · About · Beyond · Contact · BookingModal
-│  ├─ work/             ProjectCard · ProjectCover · ProjectDrawer · CodeBlock
+│  ├─ work/             ProjectCard · ProjectCover · CodeBlock
+│  ├─ projects/         ProjectsArchive · ProjectRow · CaseToc · Figure · LivePreview
 │  ├─ research/         PublicationRow · CiteButton · PdfModal
 │  ├─ about/            Timeline · SkillsRadar · SkillCloud
 │  └─ ui/               Button (cva) · Badge · Modal · SectionHeading
-├─ data/                projects.ts · research.ts · startup.ts · profile.ts · hero.ts · hobbies.ts   ← edit these
+├─ app/projects/        page.tsx (archive) · [slug]/page.tsx (case study)
+├─ data/projects/       one file per project + index.ts
+├─ data/                research.ts · startup.ts · profile.ts · hero.ts · hobbies.ts   ← edit these
 └─ lib/                 types.ts · audience.ts · utils.ts
 ```
 
 ## Make it yours (checklist)
 
-- [ ] `src/data/*.ts`: **all project, research and metric content is placeholder.** Replace it with real work.
+- [x] Projects: real, from GitHub and Vercel
+- [ ] `src/data/research.ts`, `startup.ts`: still placeholder content
 - [ ] `src/data/profile.ts`: email, socials (confirm the GitHub username), CV path, display name
 - [ ] `public/cv.pdf` and `public/papers/*.pdf`: swap in real PDFs
 - [ ] `.env.local`: `NEXT_PUBLIC_BOOKING_URL` (Cal.com or Calendly)

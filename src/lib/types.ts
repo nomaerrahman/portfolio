@@ -1,8 +1,8 @@
 export type Audience = "all" | "corporate" | "academic" | "startup";
 export type Track = Exclude<Audience, "all">;
 
-export type ProjectCategory = "Data Engineering" | "Full-Stack / Web" | "Academic / AI" | "Startup Ventures";
-export type ProjectFormat = "Case study" | "Publication" | "Open source" | "Client work";
+export type ProjectCategory = "Data Engineering" | "Data Science & Analytics" | "Full-Stack / Web" | "Client Work";
+export type ProjectFormat = "Case study" | "Analysis" | "Web app" | "Client template" | "Open source";
 
 export interface Metric {
   label: string;
@@ -21,39 +21,53 @@ export interface Testimonial {
   role: string;
 }
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  caption?: string;
+  /** width / height, used to reserve space and avoid layout shift */
+  ratio: number;
+  /** Charts on light backgrounds render inside a light "figure" frame. */
+  light?: boolean;
+}
+
 export interface Project {
   slug: string;
   title: string;
+  /** One line for cards. */
   tagline: string;
-  year: number;
+  /** Two or three sentences for the case-study header and SEO description. */
+  summary: string;
+  /** ISO month, e.g. "2026-10". Used for sorting and the year label. */
+  date: string;
   role: string;
   categories: ProjectCategory[];
   format: ProjectFormat;
-  /** Which audiences this project is relevant to, and how strongly (0-3). Drives filtering & ranking. */
+  /** Lower numbers appear first on the homepage "All" view. Omit to keep it archive-only. */
+  featured?: number;
+  /** How relevant this is to each audience (0-3). Drives ranking. */
   relevance: Record<Track, number>;
   stack: string[];
   highlight: Metric;
   metrics: Metric[];
-  /** Two HSL hue values used to paint the generative cover / preview. */
+  /** Two HSL hues for the generative cover. */
   palette: [number, number];
-  /** Optional preview video (mp4/webm) shown on hover. Drop files in /public/previews. */
-  previewVideo?: string;
+  cover?: ProjectImage;
+  gallery?: ProjectImage[];
   links: {
-    /** Live site or demo */
     demo?: string;
-    /** Source code */
     repo?: string;
-    /** Paper, poster or dataset page */
-    paper?: string;
+    /** Extra documents, e.g. a PRD or business case in the repo */
+    docs?: { label: string; href: string }[];
   };
   caseStudy: {
     context: string;
     goal: string;
     problem: string;
-    foundation: string;
-    architecture: string[];
+    approach: string[];
     snippet?: CodeSnippet;
-    impact: string[];
+    results: string[];
+    limitations?: string[];
     testimonial?: Testimonial;
   };
 }
