@@ -114,8 +114,7 @@ export interface TimelineEntry {
   description: string;
 }
 
-export interface Skill {
-  name: string;
-  group: "Data" | "ML / Research" | "Engineering" | "Product & Growth";
-  level: number; // 1-5
+export interface SkillGroup {
+  group: string;
+  items: string[];
 }

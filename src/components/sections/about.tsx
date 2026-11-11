@@ -1,9 +1,9 @@
 "use client";
 
+import { FileText } from "lucide-react";
 import { useSectionIndex } from "@/components/providers/audience-provider";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Timeline } from "@/components/about/timeline";
-import { SkillsRadar } from "@/components/about/skills-radar";
 import { SkillCloud } from "@/components/about/skill-cloud";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
@@ -36,17 +36,27 @@ export function About() {
 
         <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr]">
           <div>
-            <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-muted">Journey</h3>
+            <h3 className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-muted">Experience & education</h3>
             <Timeline />
           </div>
           <div className="space-y-12">
-            <Reveal className="rounded-3xl border border-border bg-surface/40 p-6 md:p-8">
-              <h3 className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-muted">Core competencies</h3>
-              <SkillsRadar />
+            <Reveal>
+              <h3 className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-muted">Skills</h3>
+              <SkillCloud />
             </Reveal>
             <Reveal>
-              <h3 className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-muted">Stack</h3>
-              <SkillCloud />
+              <a
+                href={profile.cvUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="card group flex items-center justify-between gap-4 p-5"
+              >
+                <span>
+                  <span className="block font-medium">Full CV</span>
+                  <span className="text-sm text-muted">Experience, education and module grades (PDF)</span>
+                </span>
+                <FileText size={18} className="text-muted transition-colors group-hover:text-fg" />
+              </a>
             </Reveal>
           </div>
         </div>

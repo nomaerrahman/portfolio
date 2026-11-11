@@ -4,7 +4,7 @@
  */
 export const startup = {
   name: "HypeSpark",
-  role: "Founder",
+  role: "Co-founder",
   url: "https://hypespark-three.vercel.app",
   tagline: "A digital transformation studio for UK businesses",
   vision:

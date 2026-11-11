@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 import type { InquiryType } from "@/lib/audience";
+import { profile } from "@/data/profile";
 
 /** Cross-section UI state: booking modal and preferred inquiry type. */
 interface UIState {
@@ -22,7 +23,13 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
     <UIContext.Provider
       value={{
         bookingOpen,
-        openBooking: () => setBookingOpen(true),
+        openBooking: () => {
+          if (profile.bookingUrl) return setBookingOpen(true);
+          // No calendar configured: take people to the contact section instead.
+          const el = document.getElementById("contact");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+          else window.location.href = "/#contact";
+        },
         closeBooking: () => setBookingOpen(false),
         inquiry,
         setInquiry,

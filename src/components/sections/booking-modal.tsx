@@ -14,6 +14,7 @@ export function BookingModal() {
   const { bookingOpen, closeBooking } = useUI();
   const [loaded, setLoaded] = useState(false);
   const url = profile.bookingUrl;
+  if (!url) return null;
   const embedUrl = url.includes("calendly.com")
     ? `${url}?hide_gdpr_banner=1&background_color=0a0a0b&text_color=f5f3ef&primary_color=ff6a3d`
     : `${url}${url.includes("?") ? "&" : "?"}embed=true&theme=dark`;
