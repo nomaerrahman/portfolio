@@ -18,7 +18,7 @@ import { profile } from "@/data/profile";
 const CREDENTIALS = [
   { icon: GraduationCap, label: profile.degree, org: profile.university },
   { icon: Briefcase, label: "Junior Data Engineer", org: "Carrot Soft" },
-  { icon: Rocket, label: "Co-founder", org: "Mango Media" },
+  { icon: Rocket, label: "Founder", org: "HypeSpark" },
 ];
 
 /** Allows previewing copy variants with ?hero=a|b|c without a redeploy. */

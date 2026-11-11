@@ -41,10 +41,10 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: "2026",
-    title: "Co-founded Mango Media",
-    org: "3-partner digital agency",
+    title: "Founded HypeSpark",
+    org: "Digital transformation studio · London",
     track: "startup",
-    description: "Websites, social branding, QR review systems and influencer marketing for small businesses.",
+    description: "Advice, websites and apps, review systems, automation and data for UK small and mid-sized businesses.",
   },
   {
     year: "2026",
@@ -58,7 +58,7 @@ export const timeline: TimelineEntry[] = [
     title: "What I'm looking for",
     org: "Open to conversations",
     track: "corporate",
-    description: "Graduate data engineering / data science roles, research collaborations, and new agency clients.",
+    description: "Graduate data engineering / data science roles, research collaborations, and new HypeSpark clients.",
   },
 ];
 
