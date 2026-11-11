@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowDown, ArrowRight, Briefcase, CalendarClock, FileText, GraduationCap, Rocket } from "lucide-react";
+import { ArrowDown, ArrowRight, Briefcase, Mail, FileText, GraduationCap, Rocket } from "lucide-react";
 import { useEffect, useState } from "react";
 import { HeroBackdrop } from "@/components/effects/hero-backdrop";
 import { PipelineCard } from "@/components/effects/pipeline-card";
@@ -19,7 +19,7 @@ import { profile } from "@/data/profile";
 const CREDENTIALS = [
   { icon: GraduationCap, label: profile.degree, org: profile.university },
   { icon: Briefcase, label: "Junior Data Engineer", org: "Carrot Soft" },
-  { icon: Rocket, label: "Founder", org: "HypeSpark" },
+  { icon: Rocket, label: "Co-founder", org: "HypeSpark" },
 ];
 
 /** Allows previewing copy variants with ?hero=a|b|c without a redeploy. */
@@ -58,7 +58,7 @@ export function Hero() {
           <motion.p {...enter(0)} className="glass mb-8 inline-flex items-center gap-2.5 rounded-full px-3.5 py-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             <span className="text-[13px] text-muted">
-              Hi, I&apos;m <span className="font-medium text-fg">{profile.shortName}</span> · Data Engineer · London
+              Hi, I&apos;m <span className="font-medium text-fg">{profile.shortName}</span> · {profile.headline} · London
             </span>
           </motion.p>
 
@@ -89,7 +89,7 @@ export function Hero() {
             )}
             {config.primaryCta.action !== "book" && (
               <Button size="lg" variant="ghost" onClick={openBooking}>
-                <CalendarClock size={16} /> Book a call
+                <Mail size={16} /> Get in touch
               </Button>
             )}
           </motion.div>

@@ -79,7 +79,7 @@ export function Startup() {
       <div className="container relative">
         <SectionHeading
           index={sectionIndex}
-          eyebrow="Founder spotlight"
+          eyebrow="Venture · Co-founder"
           title={
             <>
               <span className="text-startup">{startup.name}</span>
@@ -212,7 +212,7 @@ export function Startup() {
               </a>
             </Magnetic>
             <Button variant="outline" size="lg" onClick={openBooking}>
-              Book a call
+              Get in touch
             </Button>
           </Reveal>
         </div>

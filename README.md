@@ -7,7 +7,7 @@ A hybrid portfolio for three audiences (recruiters, academic committees, startup
 
 ```bash
 npm install
-cp .env.example .env.local   # add your Cal.com / Calendly link
+cp .env.example .env.local   # optional: a Cal.com / Calendly link enables "Book a call"
 npm run dev                  # http://localhost:3000
 ```
 
@@ -77,16 +77,14 @@ src/
 └─ lib/                 types.ts · audience.ts · utils.ts
 ```
 
-## Make it yours (checklist)
+## Content sources
 
-- [x] Projects: real, from GitHub and Vercel
-- [x] `src/data/startup.ts`: HypeSpark (mirrors the live HypeSpark site copy)
-- [ ] `src/data/research.ts`: still placeholder content
-- [ ] `src/data/profile.ts`: email, socials (confirm the GitHub username), CV path, display name
-- [ ] `public/cv.pdf` and `public/papers/*.pdf`: swap in real PDFs
-- [ ] `.env.local`: `NEXT_PUBLIC_BOOKING_URL` (Cal.com or Calendly)
-- [ ] `src/app/api/contact/route.ts`: connect an email provider (Resend, Postmark, Formspree…)
-- [ ] Optional: add hover preview videos in `public/previews/` and set `previewVideo` on a project
+- **CV:** `public/Nomaer_Naiem_CV.pdf`. Profile, timeline and skills in `src/data/profile.ts` mirror it; update both together.
+- **Projects:** `src/data/projects/` (one file each).
+- **Coursework:** `src/data/academic.ts` + PDFs in `public/academic/`.
+- **Venture:** `src/data/startup.ts` (HypeSpark).
+- **Contact:** the form opens a ready-to-send email to the address in `profile.ts`; no backend needed.
+- **Optional:** set `NEXT_PUBLIC_BOOKING_URL` to add a "Book a call" calendar.
 
 ## Design tokens
 

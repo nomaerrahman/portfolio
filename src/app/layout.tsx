@@ -12,11 +12,11 @@ import { BookingModal } from "@/components/sections/booking-modal";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-two-gray-53.vercel.app"),
-  title: `${profile.name} · Data Engineer & Founder`,
+  title: `${profile.name} · Data Analyst & Data Engineer`,
   description:
-    "Nom: data engineer, MSc Data Science and Analytics student at Brunel University London, web developer and founder of HypeSpark.",
+    "Nomaer Naiem (Nom): data analyst and Junior Data Engineer, MSc Data Science and Analytics at Brunel University London, and co-founder of HypeSpark.",
   openGraph: {
-    title: `${profile.name} · Data Engineer & Founder`,
+    title: `${profile.name} · Data Analyst & Data Engineer`,
     description: "Data engineering, analytics and web projects, plus HypeSpark.",
     type: "website",
   },

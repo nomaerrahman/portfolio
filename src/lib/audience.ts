@@ -56,9 +56,9 @@ export const AUDIENCES: AudienceConfig[] = [
     primaryCta: { label: "View CV", action: "cv" },
     inquiry: "recruiter",
     stats: [
+      { value: "35%", label: "Less reporting time at Carrot Soft" },
       { value: "42", label: "Automated dbt data tests" },
       { value: "1.6%", label: "Forecast back-test error" },
-      { value: "835M", label: "NHS appointments modelled" },
     ],
   },
   {
@@ -81,7 +81,7 @@ export const AUDIENCES: AudienceConfig[] = [
     short: "Clients",
     tone: "startup",
     lens: "Client lens: HypeSpark and live client sites first.",
-    primaryCta: { label: "Book a call", action: "book" },
+    primaryCta: { label: "Get in touch", action: "book" },
     inquiry: "client",
     stats: [
       { value: "7", label: "HypeSpark services" },

@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Briefcase, CalendarClock, Check, ChevronDown, GraduationCap, Loader2, Rocket } from "lucide-react";
+import { ArrowRight, Briefcase, CalendarClock, Check, ChevronDown, FileText, GraduationCap, Linkedin, Loader2, Mail, Rocket } from "lucide-react";
 import { useEffect, useState } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
@@ -67,23 +67,19 @@ export function Contact() {
 
   const current = INQUIRIES.find((i) => i.id === inquiry)!;
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  /**
+   * Opens the visitor's email app with the message ready to send to my inbox.
+   * No server or third-party form service needed, and nothing is stored.
+   */
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-    setStatus("sending");
+    const d = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
     setError(null);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, inquiry }),
-      });
-      if (!res.ok) throw new Error((await res.json()).error ?? "Something went wrong");
-      setStatus("sent");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
-      setStatus("error");
-    }
+    const extra = d[current.extra.name] ? `${current.extra.label}: ${d[current.extra.name]}\n` : "";
+    const subject = `${current.label}: ${d.name}`;
+    const body = `${d.message}\n\n—\n${d.name}\n${d.email}\n${extra}`;
+    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setStatus("sent");
   }
 
   return (
@@ -97,7 +93,7 @@ export function Contact() {
               Let&apos;s build <span className="font-serif font-normal italic" style={{ color: `hsl(var(--${current.tone}))` }}>something</span> together.
             </>
           }
-          description="Pick what you're here for and the form adapts. I reply within two working days."
+          description="Pick what you're here for and the form adapts. It opens a ready-to-send email, or you can reach me directly."
         />
 
         <div className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
@@ -131,14 +127,29 @@ export function Contact() {
             })}
 
             <div className="mt-3 rounded-3xl border border-dashed border-border p-6">
-              <p className="font-medium">Prefer to talk?</p>
-              <p className="mt-1 text-sm text-muted">Grab 20 minutes in my calendar. No forms needed.</p>
-              <Button variant="outline" className="mt-4" onClick={openBooking}>
-                <CalendarClock size={15} /> Open calendar
-              </Button>
-              <p className="mt-4 text-sm text-muted">
-                or email <a href={`mailto:${profile.email}`} className="text-fg underline-offset-4 hover:underline">{profile.email}</a>
-              </p>
+              <p className="font-medium">Prefer to reach me directly?</p>
+              <ul className="mt-4 space-y-3 text-sm">
+                <li>
+                  <a href={`mailto:${profile.email}`} className="flex items-center gap-2.5 text-muted transition-colors hover:text-fg">
+                    <Mail size={15} /> {profile.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={profile.socials.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-muted transition-colors hover:text-fg">
+                    <Linkedin size={15} /> linkedin.com/in/nomaer-rahman
+                  </a>
+                </li>
+                <li>
+                  <a href={profile.cvUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-muted transition-colors hover:text-fg">
+                    <FileText size={15} /> Download my CV
+                  </a>
+                </li>
+              </ul>
+              {profile.bookingUrl && (
+                <Button variant="outline" className="mt-5" onClick={openBooking}>
+                  <CalendarClock size={15} /> Book a call
+                </Button>
+              )}
             </div>
           </Reveal>
 
@@ -160,8 +171,8 @@ export function Contact() {
                   >
                     <Check size={28} />
                   </motion.span>
-                  <h3 className="mt-6 text-2xl font-semibold">Message sent.</h3>
-                  <p className="mt-2 max-w-sm text-muted">Thanks for reaching out. I&apos;ll get back to you within two working days.</p>
+                  <h3 className="mt-6 text-2xl font-semibold">Your email is ready.</h3>
+                  <p className="mt-2 max-w-sm text-muted">Your email app should have opened with the message filled in. Just press send. If nothing opened, email me at{" "}<a href={`mailto:${profile.email}`} className="text-fg underline underline-offset-4">{profile.email}</a>.</p>
                   <Button variant="ghost" className="mt-6" onClick={() => setStatus("idle")}>
                     Send another
                   </Button>
@@ -221,7 +232,7 @@ export function Contact() {
                     <p className="text-xs text-muted">Your details are only used to reply to you.</p>
                     <Button type="submit" size="lg" disabled={status === "sending"}>
                       {status === "sending" ? <Loader2 size={16} className="animate-spin" /> : null}
-                      {status === "sending" ? "Sending" : "Send message"}
+                      {status === "sending" ? "Opening" : "Write email"}
                       {status !== "sending" && <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
                     </Button>
                   </div>

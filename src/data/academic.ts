@@ -12,6 +12,7 @@ export const degrees: Degree[] = [
     id: "msc",
     title: "MSc Data Science and Analytics",
     institution: "Brunel University London",
+    period: "2025 – 2027",
     status: "In progress",
     note: "Taught modules 2025–26, followed by a paid placement year as a Junior Data Engineer at Carrot Soft (2026–27).",
     upcoming: "Dissertation in progress",
@@ -55,6 +56,7 @@ export const degrees: Degree[] = [
         id: "lms-attainment-proposal",
         kind: "Research proposal",
         title: "Which LMS features actually predict student attainment?",
+        module: "Research Project Management",
         year: "2025–26",
         summary:
           "A research proposal for finding which learning-platform features predict grades on their own, rather than just reflecting how much a student clicks overall. It designs engineered engagement features, checks multicollinearity (VIF, Lasso), compares Random Forest, XGBoost and a small neural network with Bayesian tuning and macro-F1, and includes a 17-week project plan.",
@@ -65,7 +67,7 @@ export const degrees: Degree[] = [
         id: "iot-data-management",
         kind: "Essay",
         title: "How to effectively manage IoT data",
-        module: "Data Innovation and Strategy",
+        module: "Digital Innovation and Strategy",
         year: "2025–26",
         summary:
           "Reviews IoT data management frameworks, selects an edge–cloud architecture as the best fit, and applies it to AWS as a case study, from edge processing and stream ingestion to storage and analytics. It closes with the limits in practice: architectural complexity, data consistency, security and dependence on a single cloud provider.",
@@ -76,7 +78,7 @@ export const degrees: Degree[] = [
         id: "syri-automated-decisions",
         kind: "Essay",
         title: "Automated decision systems in public services: the SyRI case",
-        module: "Ethics and Governance",
+        module: "Critical Analysis of Modern Data",
         year: "2025–26",
         summary:
           "A reflective essay on the Dutch SyRI welfare-fraud system, ruled unlawful in 2020 for breaching the right to privacy. It examines the legal, social and ethical failures behind it and argues that public-sector automated decision-making needs transparency, contestability and independent oversight built in from the start.",
@@ -87,8 +89,9 @@ export const degrees: Degree[] = [
   },
   {
     id: "bsc",
-    title: "BSc Computer Science",
+    title: "BSc (Hons) Computer Science",
     institution: "Brunel University London",
+    period: "2021 – 2023",
     status: "Completed",
     works: [],
   },
