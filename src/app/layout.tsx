@@ -6,8 +6,13 @@ import { ThemeProvider, themeScript } from "@/components/providers/theme-provide
 import { AudienceProvider } from "@/components/providers/audience-provider";
 import { UIProvider } from "@/components/providers/ui-provider";
 import { profile } from "@/data/profile";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { BookingModal } from "@/components/sections/booking-modal";
+import { PointerSpotlight } from "@/components/effects/pointer-spotlight";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-two-gray-53.vercel.app"),
   title: `${profile.name} · Builder, Researcher, Founder`,
   description:
     "Nom: data engineer, MSc Data Science & AI researcher at Brunel University London, web developer and co-founder of Mango Media.",
@@ -34,7 +39,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="noise">
         <ThemeProvider>
           <AudienceProvider>
-            <UIProvider>{children}</UIProvider>
+            <UIProvider>
+              <PointerSpotlight />
+              <Navbar />
+              {children}
+              <Footer />
+              <BookingModal />
+            </UIProvider>
           </AudienceProvider>
         </ThemeProvider>
       </body>
