@@ -72,22 +72,34 @@ export interface Project {
   };
 }
 
-export type ResearchKind = "Paper" | "Poster" | "Dataset" | "Thesis" | "Teaching" | "Award";
+export type AcademicKind = "Dissertation" | "Final-year project" | "Coursework" | "Group project" | "Lab report";
 
-export interface ResearchItem {
+export interface AcademicWork {
   id: string;
-  kind: ResearchKind;
+  kind: AcademicKind;
   title: string;
-  authors: string[];
-  venue: string;
-  year: number;
-  status?: "Published" | "Under review" | "In preparation" | "Completed";
-  abstract: string;
-  keywords: string[];
+  /** Module name and code, e.g. "Big Data Analytics (CS5800)" */
+  module?: string;
+  year: string;
+  /** Optional: show only marks you are happy to share, e.g. "First", "Distinction", "78%". */
+  grade?: string;
+  summary: string;
+  skills: string[];
+  /** PDF in /public/academic/<degree>/ */
   pdfUrl?: string;
-  doi?: string;
-  codeUrl?: string;
-  bibtex?: string;
+  repoUrl?: string;
+  /** Show at the top of its degree with more space (e.g. the dissertation). */
+  highlight?: boolean;
+}
+
+export interface Degree {
+  id: string;
+  title: string;
+  institution: string;
+  period?: string;
+  status: "In progress" | "Completed";
+  note?: string;
+  works: AcademicWork[];
 }
 
 export interface TimelineEntry {

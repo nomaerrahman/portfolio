@@ -1,13 +1,16 @@
 import type { Audience, Track } from "./types";
 
-export type SectionId = "work" | "research" | "startup" | "about" | "beyond" | "contact";
+export type SectionId = "work" | "academic" | "startup" | "about" | "beyond" | "contact";
 
 /** Stable page order. Audience modes change emphasis, never navigation. */
-export const SECTION_ORDER: SectionId[] = ["work", "research", "startup", "about", "beyond", "contact"];
+export const SECTION_ORDER: SectionId[] = ["work", "academic", "startup", "about", "beyond", "contact"];
+
+/** Sections shown in the header (Beyond is reachable by scrolling). */
+export const NAV_SECTIONS: SectionId[] = ["work", "academic", "startup", "about", "contact"];
 
 export const SECTION_LABELS: Record<SectionId, string> = {
   work: "Work",
-  research: "Research",
+  academic: "Academic",
   startup: "Venture",
   about: "About",
   beyond: "Beyond",
@@ -32,10 +35,10 @@ export type InquiryType = "recruiter" | "academic" | "client";
 export const AUDIENCES: AudienceConfig[] = [
   {
     id: "all",
-    label: "All Work",
-    short: "All",
+    label: "Everyone",
+    short: "Everyone",
     tone: "accent",
-    lens: "Showing everything: engineering, research and venture work side by side.",
+    lens: "Showing everything: engineering, analytics, academic and venture work.",
     primaryCta: { label: "Explore projects", action: "projects" },
     inquiry: "recruiter",
     stats: [
@@ -46,8 +49,8 @@ export const AUDIENCES: AudienceConfig[] = [
   },
   {
     id: "corporate",
-    label: "Corporate",
-    short: "Corp",
+    label: "Recruiters",
+    short: "Recruiters",
     tone: "corporate",
     lens: "Recruiter lens: production systems and measurable impact first.",
     primaryCta: { label: "View CV", action: "cv" },
@@ -60,10 +63,10 @@ export const AUDIENCES: AudienceConfig[] = [
   },
   {
     id: "academic",
-    label: "Academic",
-    short: "Acad",
+    label: "Academics",
+    short: "Academics",
     tone: "academic",
-    lens: "Academic lens: research outputs, methods and datasets first.",
+    lens: "Academic lens: degrees, coursework and analytical case studies first.",
     primaryCta: { label: "Academic CV", action: "cv" },
     inquiry: "academic",
     stats: [
@@ -74,8 +77,8 @@ export const AUDIENCES: AudienceConfig[] = [
   },
   {
     id: "startup",
-    label: "Startup / Venture",
-    short: "Venture",
+    label: "Clients",
+    short: "Clients",
     tone: "startup",
     lens: "Client lens: HypeSpark and live client sites first.",
     primaryCta: { label: "Book a call", action: "book" },

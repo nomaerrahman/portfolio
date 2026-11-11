@@ -34,7 +34,7 @@ export function Work() {
           description={
             audience === "all"
               ? "A few highlights across data engineering, analytics and web. The full archive has every project with a write-up."
-              : `Picked for the ${config.label.toLowerCase()} view. The full archive has everything else.`
+              : `Picked for ${config.label.toLowerCase()}. The full archive has everything else.`
           }
         >
           <Link

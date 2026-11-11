@@ -10,6 +10,7 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { Counter } from "@/components/motion/counter";
 import { ease } from "@/components/motion/presets";
 import { Button } from "@/components/ui/button";
+import { AudienceSwitcher } from "@/components/layout/audience-switcher";
 import { useAudience } from "@/components/providers/audience-provider";
 import { useUI } from "@/components/providers/ui-provider";
 import { DEFAULT_HERO, HERO_VARIANTS, type HeroVariant } from "@/data/hero";
@@ -93,18 +94,22 @@ export function Hero() {
             )}
           </motion.div>
 
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={config.id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="mt-5 text-sm text-muted"
-            >
-              {config.lens}
-            </motion.p>
-          </AnimatePresence>
+          <motion.div {...enter(0.75)} className="mt-10 border-t border-border pt-6">
+            <p className="t-eyebrow mb-3">Tailor this page for</p>
+            <AudienceSwitcher className="w-full max-w-[460px]" />
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={config.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="mt-3 text-sm text-muted"
+              >
+                {config.lens}
+              </motion.p>
+            </AnimatePresence>
+          </motion.div>
         </div>
 
         <PipelineCard className="w-full max-w-[560px] justify-self-center lg:justify-self-end" />
