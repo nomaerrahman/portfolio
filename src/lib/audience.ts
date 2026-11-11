@@ -39,9 +39,9 @@ export const AUDIENCES: AudienceConfig[] = [
     primaryCta: { label: "Explore projects", action: "projects" },
     inquiry: "recruiter",
     stats: [
-      { value: "12+", label: "Systems shipped" },
-      { value: "3", label: "Research outputs" },
-      { value: "20+", label: "Agency clients" },
+      { value: "12", label: "Projects with write-ups" },
+      { value: "4", label: "Data case studies" },
+      { value: "6", label: "Live web apps & sites" },
     ],
   },
   {
@@ -53,9 +53,9 @@ export const AUDIENCES: AudienceConfig[] = [
     primaryCta: { label: "View CV", action: "cv" },
     inquiry: "recruiter",
     stats: [
-      { value: "40%", label: "Faster pipeline runs" },
-      { value: "99.9%", label: "Job reliability" },
-      { value: "5", label: "Teams supported" },
+      { value: "42", label: "Automated dbt data tests" },
+      { value: "1.6%", label: "Forecast back-test error" },
+      { value: "835M", label: "NHS appointments modelled" },
     ],
   },
   {
@@ -67,9 +67,9 @@ export const AUDIENCES: AudienceConfig[] = [
     primaryCta: { label: "Academic CV", action: "cv" },
     inquiry: "academic",
     stats: [
-      { value: "3", label: "Papers & posters" },
-      { value: "1", label: "Open dataset" },
-      { value: "2", label: "TA modules" },
+      { value: "128", label: "Back-test forecasts scored" },
+      { value: "4,500", label: "Simulated pharmacy days" },
+      { value: "MSc", label: "Data Science & AI, Brunel" },
     ],
   },
   {
@@ -77,13 +77,13 @@ export const AUDIENCES: AudienceConfig[] = [
     label: "Startup / Venture",
     short: "Venture",
     tone: "startup",
-    lens: "Client lens: shipped products, turnaround times and outcomes first.",
+    lens: "Client lens: HypeSpark and live client sites first.",
     primaryCta: { label: "Book a call", action: "book" },
     inquiry: "client",
     stats: [
-      { value: "2 wk", label: "Typical launch" },
-      { value: "4.8★", label: "Avg. client review" },
-      { value: "3×", label: "Review volume lift" },
+      { value: "7", label: "HypeSpark services" },
+      { value: "6", label: "Live client-style sites" },
+      { value: "AA", label: "WCAG 2.2 accessibility target" },
     ],
   },
 ];

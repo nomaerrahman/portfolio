@@ -19,7 +19,7 @@ const project: Project = {
     { value: "PDF", label: "Exportable breakdown" },
   ],
   palette: [140, 45],
-  links: { repo: "https://github.com/nomaerrahman/uk-tax-calculator" },
+  links: { demo: "https://uk-tax-calculator-peach.vercel.app", repo: "https://github.com/nomaerrahman/uk-tax-calculator" },
   caseStudy: {
     context: "Most take-home pay calculators either hide the working or ignore less common tax codes.",
     goal: "A clear, accurate calculator that shows every deduction and lets people keep a copy.",
@@ -30,7 +30,7 @@ const project: Project = {
       "Income slider and manual input, with yearly, monthly and weekly views.",
       "Pension contribution adjustment and tax code interpretation with allowance display.",
       "PDF export of the full breakdown with jsPDF; light and dark themes; responsive layout.",
-      "GitHub Actions deploys the built app to GitHub Pages.",
+      "Deployed on Vercel, with relative asset paths so it also runs on GitHub Pages.",
     ],
     results: [
       "Handles 1257L, BR, D0, D1, NT and K codes.",

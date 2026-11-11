@@ -80,7 +80,8 @@ src/
 ## Make it yours (checklist)
 
 - [x] Projects: real, from GitHub and Vercel
-- [ ] `src/data/research.ts`, `startup.ts`: still placeholder content
+- [x] `src/data/startup.ts`: HypeSpark (mirrors the live HypeSpark site copy)
+- [ ] `src/data/research.ts`: still placeholder content
 - [ ] `src/data/profile.ts`: email, socials (confirm the GitHub username), CV path, display name
 - [ ] `public/cv.pdf` and `public/papers/*.pdf`: swap in real PDFs
 - [ ] `.env.local`: `NEXT_PUBLIC_BOOKING_URL` (Cal.com or Calendly)

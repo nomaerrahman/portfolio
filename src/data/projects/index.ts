@@ -15,7 +15,6 @@ import lumenAndGrainCafe from "./lumen-and-grain-cafe";
 import auraBeautyLounge from "./aura-beauty-lounge";
 import apexGroomingBarbershop from "./apex-grooming-barbershop";
 import novaEvents from "./nova-events";
-import hypespark from "./hypespark";
 import insightDashboard from "./insight-dashboard";
 import ukTaxCalculator from "./uk-tax-calculator";
 import portfolio from "./portfolio";
@@ -30,7 +29,6 @@ export const projects: Project[] = [
   auraBeautyLounge,
   apexGroomingBarbershop,
   novaEvents,
-  hypespark,
   insightDashboard,
   ukTaxCalculator,
   portfolio,

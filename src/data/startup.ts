@@ -1,49 +1,79 @@
-/** MOCK CONTENT for the founder spotlight. Replace numbers and copy with real ones. */
+/**
+ * Founder spotlight: HypeSpark. Copy mirrors the live HypeSpark site
+ * (src/lib/content.ts there). Deliberately no invented metrics or testimonials.
+ */
 export const startup = {
-  name: "Mango Media",
-  tagline: "A digital growth studio for small businesses",
+  name: "HypeSpark",
+  role: "Founder",
+  url: "https://hypespark-three.vercel.app",
+  tagline: "A digital transformation studio for UK businesses",
   vision:
-    "Most small businesses lose customers online not because their product is weak, but because their presence is. We give them a website, brand and review engine that works as hard as they do, without agency prices or agency timelines.",
-  founded: "2026",
-  partners: 3,
-  bookingCta: "Book a 20-min discovery call",
-  pillars: [
-    { title: "Speed", body: "Fixed-scope packages that launch in two weeks." },
-    { title: "Clarity", body: "One price, one board, weekly updates. No surprises." },
-    { title: "Results", body: "Every package ships with tracking, so we can show what changed." },
+    "Most established small and mid-sized businesses know their digital setup is holding them back. HypeSpark gives them independent advice first, then designs and builds what fixes it: websites and apps, review systems, automation and data. Founders on every project, fixed-price proposals, and you own everything we build.",
+  facts: ["London, UK", "Fixed-price"],
+  practices: [
+    {
+      id: "strategy",
+      label: "Strategy & Advisory",
+      outcome: "Know exactly where to go next",
+      description: "Independent advice and hard evidence before you spend on technology.",
+      services: [
+        { slug: "technology-consulting", name: "Technology Consulting" },
+        { slug: "digital-audits", name: "Digital Audits & Security" },
+      ],
+    },
+    {
+      id: "experience",
+      label: "Experience & Engineering",
+      outcome: "Build what your customers use",
+      description: "Websites, online shops and apps designed and engineered in-house.",
+      services: [
+        { slug: "websites-ecommerce", name: "Websites & E-Commerce" },
+        { slug: "mobile-apps", name: "Mobile Apps (iOS & Android)" },
+      ],
+    },
+    {
+      id: "growth",
+      label: "Growth & Reputation",
+      outcome: "Be found, chosen and trusted",
+      description: "Turn happy customers into reviews, visibility and new enquiries.",
+      services: [{ slug: "review-systems", name: "Google Maps & QR Review Systems" }],
+    },
+    {
+      id: "operations",
+      label: "Operations & Data",
+      outcome: "Run leaner, decide faster",
+      description: "Remove manual admin and see your whole business in one place.",
+      services: [
+        { slug: "workflow-automation", name: "Workflow & Process Automation" },
+        { slug: "data-analytics", name: "Data Analytics & Pipelines" },
+      ],
+    },
   ],
-  capabilities: [
-    {
-      id: "web",
-      title: "Websites",
-      blurb: "Fast, mobile-first sites built on a tested component kit and set up for local search.",
-      preview: { headline: "Fresh bakes, every morning", sub: "Order ahead · Open 7am–4pm", accent: 16 },
-    },
-    {
-      id: "brand",
-      title: "Social branding",
-      blurb: "A brand board, post templates and a content calendar the owner can actually keep up with.",
-      preview: { headline: "@corner.bakery", sub: "12 templates · 4-week calendar", accent: 280 },
-    },
-    {
-      id: "reviews",
-      title: "QR reviews",
-      blurb: "Table and counter QR stands that turn happy customers into public reviews in seconds.",
-      preview: { headline: "How was your visit?", sub: "★★★★★  Tap to rate", accent: 42 },
-    },
-    {
-      id: "influencer",
-      title: "Influencer marketing",
-      blurb: "Matching local creators with businesses, with briefs, tracking links and simple reporting.",
-      preview: { headline: "Creator campaign", sub: "8 creators · 46k reach", accent: 200 },
-    },
+  approach: [
+    { step: "01", title: "Diagnose", detail: "An audit of your systems and conversations with your team and customers." },
+    { step: "02", title: "Design", detail: "Experience and system designed together, prototypes tested with real users." },
+    { step: "03", title: "Build", detail: "Short, visible cycles: working progress every week or two." },
+    { step: "04", title: "Improve", detail: "Measure what matters after launch and keep improving." },
   ],
-  metrics: [
-    { value: "20+", label: "Businesses launched" },
-    { value: "14", label: "Days to launch, on average" },
-    { value: "3×", label: "Review volume lift" },
-    { value: "60%", label: "Clients who stay on" },
+  industries: [
+    "Hospitality & Retail",
+    "Professional Services",
+    "Trades & Local Services",
+    "Logistics & Distribution",
+    "E-Commerce Brands",
+    "Health & Wellbeing",
+  ],
+  facts_grid: [
+    { value: "7", label: "Services" },
+    { value: "4", label: "Practice areas" },
+    { value: "6", label: "Industries served" },
+    { value: "AA", label: "WCAG 2.2 target on every build" },
+  ],
+  commitments: [
+    { title: "Founders on every project", body: "Work directly with the people who own the business." },
+    { title: "Fixed-price proposals", body: "Clear scope and cost agreed up front." },
+    { title: "You own everything", body: "Code, designs, data and accounts, fully documented." },
   ],
 } as const;
 
-export type Capability = (typeof startup.capabilities)[number];
+export type Practice = (typeof startup.practices)[number];

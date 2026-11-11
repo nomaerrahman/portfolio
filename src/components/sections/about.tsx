@@ -22,7 +22,7 @@ export function About() {
               Three tracks, <span className="font-serif font-normal italic text-muted">one way of working.</span>
             </>
           }
-          description="Academic training taught me to doubt my own numbers. Industry taught me to ship anyway. Running an agency taught me that none of it matters unless someone's day gets better."
+          description="Academic training taught me to doubt my own numbers. Industry taught me to ship anyway. Starting a company taught me that none of it matters unless someone's day gets better."
         />
 
         <Stagger className="mb-20 grid gap-4 md:grid-cols-3">
