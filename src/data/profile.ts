@@ -28,16 +28,16 @@ export const timeline: TimelineEntry[] = [
   {
     year: "2024",
     title: "BSc Computer Science",
-    org: "Graduated",
+    org: "Brunel University London",
     track: "academic",
-    description: "Foundations in algorithms, databases and machine learning. Final project on applied ML (placeholder).",
+    description: "Software engineering, algorithms, databases and data analysis.",
   },
   {
     year: "2025",
     title: "MSc Data Science & AI",
     org: "Brunel University London",
     track: "academic",
-    description: "Research focus on fairness and reproducibility in applied machine learning.",
+    description: "Data engineering, machine learning and AI, alongside a paid placement year in industry.",
   },
   {
     year: "2026",

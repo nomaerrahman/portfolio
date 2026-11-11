@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useAudience } from "@/components/providers/audience-provider";
-import { AUDIENCES, toneVar } from "@/lib/audience";
+import { AUDIENCES } from "@/lib/audience";
 import { cn } from "@/lib/utils";
 import { spring } from "@/components/motion/presets";
 
@@ -35,7 +35,7 @@ export function AudienceSwitcher({ className, compact }: { className?: string; c
               <motion.span
                 layoutId="audience-pill"
                 className="absolute inset-0 -z-10 rounded-full"
-                style={{ background: toneVar(a.tone) }}
+                style={{ background: "hsl(var(--fg))" }}
                 transition={spring.snappy}
               />
             )}

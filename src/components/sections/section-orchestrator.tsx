@@ -1,6 +1,6 @@
 import { SECTION_ORDER, type SectionId } from "@/lib/audience";
 import { Work } from "./work";
-import { Research } from "./research";
+import { Academic } from "./academic";
 import { Startup } from "./startup";
 import { About } from "./about";
 import { Beyond } from "./beyond";
@@ -8,7 +8,7 @@ import { Contact } from "./contact";
 
 const SECTIONS: Record<SectionId, () => JSX.Element> = {
   work: Work,
-  research: Research,
+  academic: Academic,
   startup: Startup,
   about: About,
   beyond: Beyond,

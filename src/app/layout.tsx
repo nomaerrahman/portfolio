@@ -9,16 +9,15 @@ import { profile } from "@/data/profile";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { BookingModal } from "@/components/sections/booking-modal";
-import { PointerSpotlight } from "@/components/effects/pointer-spotlight";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-two-gray-53.vercel.app"),
-  title: `${profile.name} · Builder, Researcher, Founder`,
+  title: `${profile.name} · Data Engineer & Founder`,
   description:
     "Nom: data engineer, MSc Data Science & AI researcher at Brunel University London, web developer and founder of HypeSpark.",
   openGraph: {
-    title: `${profile.name} · Builder, Researcher, Founder`,
-    description: "Selected work, research and ventures.",
+    title: `${profile.name} · Data Engineer & Founder`,
+    description: "Data engineering, analytics and web projects, plus HypeSpark.",
     type: "website",
   },
 };
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <AudienceProvider>
             <UIProvider>
-              <PointerSpotlight />
               <Navbar />
               {children}
               <Footer />
