@@ -11,7 +11,7 @@ export const degrees: Degree[] = [
   {
     id: "msc",
     title: "MSc Data Science and Analytics",
-    institution: "Brunel University London",
+    institution: "Brunel University of London",
     period: "2025 – 2027",
     status: "In progress",
     note: "Taught modules 2025–26, followed by a paid placement year as a Junior Data Engineer at Carrot Soft (2026–27).",

@@ -8,7 +8,7 @@ export const profile = {
   handle: "nomaerrahman",
   headline: "Data Analyst · Data Engineer",
   degree: "MSc Data Science and Analytics",
-  university: "Brunel University London",
+  university: "Brunel University of London",
   location: "London, UK",
   email: "nomaernaiem@outlook.com",
   cvUrl: "/Nomaer_Naiem_CV.pdf",
@@ -50,7 +50,7 @@ export const timeline: TimelineEntry[] = [
   {
     year: "2025–27",
     title: "MSc Data Science and Analytics",
-    org: "Brunel University London",
+    org: "Brunel University of London",
     track: "academic",
     description: "Machine learning, distributed data systems, data ethics and governance, analytics strategy and research methods.",
   },
@@ -64,9 +64,9 @@ export const timeline: TimelineEntry[] = [
   {
     year: "2026",
     title: "Co-founded HypeSpark",
-    org: "Early-stage software venture · London",
+    org: "Digital transformation studio · London",
     track: "startup",
-    description: "Shared ownership of product direction, technical decisions and go-to-market planning; set up the engineering workflow for its first product, BetterShelf.",
+    description: "A London-based digital transformation studio for UK small and mid-sized businesses. Shared ownership of product direction, technical decisions and go-to-market planning; set up the engineering workflow for its first product, BetterShelf.",
   },
   {
     year: "2026–now",
@@ -89,7 +89,7 @@ export const skills: SkillGroup[] = [
   },
   {
     group: "Data Engineering",
-    items: ["ETL / ELT pipelines", "dbt", "DuckDB", "Google BigQuery", "Spark", "Data quality testing", "Git & GitHub Actions (CI/CD)"],
+    items: ["ETL / ELT pipelines", "dbt", "DuckDB", "Google BigQuery", "Apache Spark (MLlib)", "Data quality testing", "Git & GitHub Actions (CI/CD)"],
   },
   {
     group: "Business & Delivery",
