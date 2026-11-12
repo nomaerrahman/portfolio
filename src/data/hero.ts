@@ -24,7 +24,7 @@ export const HERO_VARIANTS: HeroVariant[] = [
     name: "Data meets the web",
     headline: ["I build where", { accent: "data" }, "meets the web."],
     lead:
-      "Nom here. I design data pipelines, ship full-stack products and study data science at Brunel University London, with one foot in engineering and one in the lab.",
+      "Nom here. I design data pipelines, ship full-stack products and study data science at Brunel University of London, with one foot in engineering and one in the lab.",
   },
   {
     id: "c",
