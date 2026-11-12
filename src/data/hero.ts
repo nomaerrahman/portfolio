@@ -17,7 +17,7 @@ export const HERO_VARIANTS: HeroVariant[] = [
     name: "Builder by instinct",
     headline: ["Data engineer by trade,", { accent: "builder" }, "by instinct."],
     lead:
-      "I'm Nom, a data analyst and Junior Data Engineer completing an MSc in Data Science and Analytics at Brunel University London. I build the pipelines, dashboards and web apps that turn raw data into decisions people can trust.",
+      "I'm Nom, a data analyst and Junior Data Engineer completing an MSc in Data Science and Analytics at Brunel University of London. I build the pipelines, dashboards and web apps that turn raw data into decisions people can trust.",
   },
   {
     id: "b",
