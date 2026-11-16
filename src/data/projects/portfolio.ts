@@ -3,26 +3,25 @@ import type { Project } from "@/lib/types";
 const project: Project = {
   slug: "portfolio",
   title: "This Portfolio",
-  tagline: "Audience-aware portfolio with a scalable project archive and typed content layer",
+  tagline: "Builder portfolio with a scalable project archive, case-study pages and typed content layer",
   summary:
-    "The site you're on. One codebase serves recruiters, academic committees and clients: an audience switcher re-ranks work and changes calls to action, while a searchable archive and per-project case-study pages keep the homepage short as projects grow.",
+    "The site you're on. It answers five questions (who I am, what I do, what I've built, what's next and what I'm into) and keeps the homepage short with a searchable archive and a case-study page per project.",
   date: "2026-11",
   role: "Design & engineering",
   categories: ["Full-Stack / Web"],
   format: "Open source",
-  relevance: { corporate: 2, academic: 1, startup: 2 },
   stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion"],
   highlight: { value: "1 file", label: "to add a project" },
   metrics: [
-    { value: "4", label: "Audience views" },
+    { value: "12", label: "Case-study pages" },
     { value: "1 file", label: "Per new project" },
     { value: "SSG", label: "Static case-study pages" },
   ],
   palette: [16, 214],
   links: { demo: "/", repo: "https://github.com/nomaerrahman/portfolio" },
   caseStudy: {
-    context: "One site has to work for recruiters, academic committees and agency clients, who each care about different things.",
-    goal: "Show the most relevant work first, keep the homepage short, and make it easy to keep adding projects.",
+    context: "A portfolio should say clearly who you are and show the work, without trying to speak to every possible audience at once.",
+    goal: "One clear story, a short homepage, and a structure that keeps working as projects are added.",
     problem: "Portfolios get cluttered as projects pile up, or split into separate sites that drift out of date.",
     approach: [
       "Each project is one typed file in src/data/projects; the archive, homepage and case-study pages all read from it.",
@@ -39,7 +38,7 @@ import gp from "./gp-demand-forecasting";
 // …
 export const projects: Project[] = [retail, gp /* … */];`,
     },
-    results: ["Shareable audience links (?view=academic) and per-project URLs for applications and proposals."],
+    results: ["Per-project URLs to share in applications and proposals, and a homepage that stays the same length however many projects are added."],
   },
 };
 

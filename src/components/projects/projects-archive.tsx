@@ -6,7 +6,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ProjectCard } from "@/components/work/project-card";
 import { ProjectRow } from "./project-row";
 import { CATEGORY_TONE } from "@/components/ui/badge";
-import { useAudience } from "@/components/providers/audience-provider";
 import { ease, spring } from "@/components/motion/presets";
 import { allProjects, CATEGORIES, matchesQuery } from "@/lib/projects";
 import type { ProjectCategory } from "@/lib/types";
@@ -27,7 +26,6 @@ function readParams() {
 }
 
 export function ProjectsArchive() {
-  const { audience } = useAudience();
   const [q, setQ] = useState("");
   const [category, setCategory] = useState<ProjectCategory | null>(null);
   const [view, setView] = useState<View>("grid");
@@ -56,13 +54,9 @@ export function ProjectsArchive() {
     const list = allProjects.filter((p) => (!category || p.categories.includes(category)) && matchesQuery(p, q.trim()));
     if (sort === "az") return [...list].sort((a, b) => a.title.localeCompare(b.title));
     if (sort === "newest") return list;
-    // Featured: curated order first, then (in an audience view) relevance, then newest.
-    return [...list].sort(
-      (a, b) =>
-        (a.featured ?? 99) - (b.featured ?? 99) ||
-        (audience !== "all" ? b.relevance[audience] - a.relevance[audience] : 0)
-    );
-  }, [q, category, sort, audience]);
+    // Featured: curated order first, then newest.
+    return [...list].sort((a, b) => (a.featured ?? 99) - (b.featured ?? 99));
+  }, [q, category, sort]);
 
   const counts = useMemo(
     () => Object.fromEntries(CATEGORIES.map((c) => [c, allProjects.filter((p) => p.categories.includes(c)).length])),

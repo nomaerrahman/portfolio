@@ -10,7 +10,6 @@ const project: Project = {
   role: "Design & front-end development",
   categories: ["Client Work", "Full-Stack / Web"],
   format: "Client template",
-  relevance: { corporate: 1, academic: 0, startup: 3 },
   stack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "Lucide"],
   highlight: { value: "5-step", label: "booking flow" },
   metrics: [

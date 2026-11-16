@@ -1,7 +1,8 @@
 "use client";
 
-import { FileText } from "lucide-react";
-import { useSectionIndex } from "@/components/providers/audience-provider";
+import { ArrowRight, FileText } from "lucide-react";
+import Link from "next/link";
+import { sectionIndex } from "@/lib/sections";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Timeline } from "@/components/about/timeline";
 import { SkillCloud } from "@/components/about/skill-cloud";
@@ -10,19 +11,18 @@ import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { profile } from "@/data/profile";
 
 export function About() {
-  const sectionIndex = useSectionIndex("about");
   return (
     <section id="about" className="section">
       <div className="container">
         <SectionHeading
-          index={sectionIndex}
-          eyebrow="About & philosophy"
+          index={sectionIndex("about")}
+          eyebrow="About"
           title={
             <>
-              Three tracks, <span className="font-serif font-normal italic text-muted">one way of working.</span>
+              A builder <span className="font-serif font-normal italic text-muted">at heart.</span>
             </>
           }
-          description="Academic training taught me to doubt my own numbers. Industry taught me to ship anyway. Starting a company taught me that none of it matters unless someone's day gets better."
+          description="I studied computer science, learned to make data trustworthy in industry and in NHS pharmacy work, and now build products of my own with HypeSpark. The thread through all of it: I like taking a messy problem and shipping something that fixes it."
         />
 
         <Stagger className="mb-20 grid gap-4 md:grid-cols-3">
@@ -57,6 +57,13 @@ export function About() {
                 </span>
                 <FileText size={18} className="text-muted transition-colors group-hover:text-fg" />
               </a>
+              <Link href="/academic" className="card group mt-3 flex items-center justify-between gap-4 p-5">
+                <span>
+                  <span className="block font-medium">Degrees & coursework</span>
+                  <span className="text-sm text-muted">MSc and BSc, with selected coursework to read</span>
+                </span>
+                <ArrowRight size={18} className="text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-fg" />
+              </Link>
             </Reveal>
           </div>
         </div>

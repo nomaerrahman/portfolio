@@ -3,21 +3,18 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ThemeProvider, themeScript } from "@/components/providers/theme-provider";
-import { AudienceProvider } from "@/components/providers/audience-provider";
-import { UIProvider } from "@/components/providers/ui-provider";
 import { profile } from "@/data/profile";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { BookingModal } from "@/components/sections/booking-modal";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-two-gray-53.vercel.app"),
-  title: `${profile.name} · Data Analyst & Data Engineer`,
+  title: `${profile.name} · Builder, Data Engineer & Co-founder`,
   description:
-    "Nomaer Naiem (Nom): data analyst and Junior Data Engineer, MSc Data Science and Analytics at Brunel University of London, and co-founder of HypeSpark.",
+    "Nomaer Naiem (Nom): a London-based builder and co-founder of HypeSpark. Data engineer shipping data, AI-assisted and web products for businesses.",
   openGraph: {
-    title: `${profile.name} · Data Analyst & Data Engineer`,
-    description: "Data engineering, analytics and web projects, plus HypeSpark.",
+    title: `${profile.name} · Builder, Data Engineer & Co-founder`,
+    description: "Data, analytics and web products I've built and shipped, plus HypeSpark.",
     type: "website",
   },
 };
@@ -37,14 +34,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="noise">
         <ThemeProvider>
-          <AudienceProvider>
-            <UIProvider>
-              <Navbar />
+          <Navbar />
               {children}
               <Footer />
-              <BookingModal />
-            </UIProvider>
-          </AudienceProvider>
         </ThemeProvider>
       </body>
     </html>

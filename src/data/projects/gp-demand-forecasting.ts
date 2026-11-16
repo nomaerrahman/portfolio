@@ -11,7 +11,6 @@ const project: Project = {
   categories: ["Data Science & Analytics"],
   format: "Case study",
   featured: 2,
-  relevance: { corporate: 3, academic: 3, startup: 0 },
   stack: ["Python", "pandas", "statsmodels", "Prophet", "Streamlit", "Altair"],
   highlight: { value: "1.6%", label: "average back-test error" },
   metrics: [

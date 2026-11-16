@@ -10,7 +10,6 @@ const project: Project = {
   role: "Frontend development",
   categories: ["Full-Stack / Web"],
   format: "Web app",
-  relevance: { corporate: 2, academic: 0, startup: 1 },
   stack: ["React", "Vite", "JavaScript", "jsPDF", "CSS"],
   highlight: { value: "6", label: "tax code types handled" },
   metrics: [

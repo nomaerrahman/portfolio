@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/components/providers/theme-provider";
 import { profile } from "@/data/profile";
-import { NAV_SECTIONS, SECTION_LABELS, type SectionId } from "@/lib/audience";
+import { NAV_SECTIONS, SECTION_LABELS, type SectionId } from "@/lib/sections";
 import { ease } from "@/components/motion/presets";
 import { cn } from "@/lib/utils";
 

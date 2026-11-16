@@ -1,8 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { ArrowDown, ArrowRight, Briefcase, Mail, FileText, GraduationCap, Rocket } from "lucide-react";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowDown, ArrowRight, Briefcase, GraduationCap, Mail, Rocket } from "lucide-react";
 import { HeroBackdrop } from "@/components/effects/hero-backdrop";
 import { PipelineCard } from "@/components/effects/pipeline-card";
 import { WordReveal } from "@/components/motion/kinetic-text";
@@ -10,27 +9,22 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { Counter } from "@/components/motion/counter";
 import { ease } from "@/components/motion/presets";
 import { Button } from "@/components/ui/button";
-import { AudienceSwitcher } from "@/components/layout/audience-switcher";
-import { useAudience } from "@/components/providers/audience-provider";
-import { useUI } from "@/components/providers/ui-provider";
-import { DEFAULT_HERO, HERO_VARIANTS, type HeroVariant } from "@/data/hero";
+import { hero } from "@/data/hero";
 import { profile } from "@/data/profile";
+import { allProjects } from "@/lib/projects";
 
 const CREDENTIALS = [
-  { icon: GraduationCap, label: profile.degree, org: profile.university },
-  { icon: Briefcase, label: "Junior Data Engineer", org: "Carrot Soft" },
   { icon: Rocket, label: "Co-founder", org: "HypeSpark" },
+  { icon: Briefcase, label: "Junior Data Engineer", org: "Carrot Soft" },
+  { icon: GraduationCap, label: profile.degree, org: profile.university },
 ];
 
-/** Allows previewing copy variants with ?hero=a|b|c without a redeploy. */
-function useHeroVariant(): HeroVariant {
-  const [id, setId] = useState<HeroVariant["id"]>(DEFAULT_HERO);
-  useEffect(() => {
-    const q = new URLSearchParams(window.location.search).get("hero");
-    if (q && HERO_VARIANTS.some((v) => v.id === q)) setId(q as HeroVariant["id"]);
-  }, []);
-  return HERO_VARIANTS.find((v) => v.id === id) ?? HERO_VARIANTS[0];
-}
+const liveSites = allProjects.filter((p) => p.links.demo && !p.links.demo.startsWith("/")).length;
+const STATS = [
+  { value: String(allProjects.length), label: "Projects shipped" },
+  { value: String(liveSites), label: "Live sites & apps" },
+  { value: "35%", label: "Less reporting time at Carrot Soft" },
+];
 
 const enter = (delay: number) => ({
   initial: { opacity: 0, y: 14 },
@@ -38,84 +32,52 @@ const enter = (delay: number) => ({
   transition: { duration: 0.7, delay, ease: ease.out },
 });
 
+const go = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+/** Who I am and what I do, in one screen. */
 export function Hero() {
-  const { config } = useAudience();
-  const { openBooking } = useUI();
-  const variant = useHeroVariant();
-
-  const runAction = (action: "projects" | "book" | "cv") => {
-    if (action === "book") return openBooking();
-    if (action === "cv") return window.open(profile.cvUrl, "_blank", "noopener");
-    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section id="top" className="relative overflow-hidden pb-20 pt-32 md:pb-28 md:pt-40">
       <HeroBackdrop />
 
       <div className="container relative grid items-center gap-14 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
         <div>
-          <motion.p {...enter(0)} className="glass mb-8 inline-flex items-center gap-2.5 rounded-full px-3.5 py-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            <span className="text-[13px] text-muted">
-              Hi, I&apos;m <span className="font-medium text-fg">{profile.shortName}</span> · {profile.headline} · London
-            </span>
+          <motion.p {...enter(0)} className="text-[15px] text-muted">
+            {hero.greeting} <span aria-hidden>👋</span>
           </motion.p>
 
-          <h1 key={variant.id} className="t-display max-w-[14ch] text-balance">
-            <WordReveal segments={variant.headline} delay={0.1} />
+          <h1 className="t-display mt-4 max-w-[15ch] text-balance">
+            <WordReveal segments={hero.headline} delay={0.1} />
           </h1>
 
-          <motion.p {...enter(0.45)} className="t-lead mt-6 max-w-[54ch] text-pretty">
-            {variant.lead}
+          <motion.ul {...enter(0.35)} className="mt-6 flex flex-wrap gap-2" aria-label="Roles">
+            {hero.roles.map((r) => (
+              <li key={r} className="rounded-full border border-border bg-surface/60 px-3 py-1 text-sm">
+                {r}
+              </li>
+            ))}
+          </motion.ul>
+
+          <motion.p {...enter(0.45)} className="t-lead mt-6 max-w-[56ch] text-pretty">
+            {hero.lead}
           </motion.p>
 
           <motion.div {...enter(0.6)} className="mt-9 flex flex-wrap items-center gap-3">
             <Magnetic>
-              <Button size="lg" onClick={() => runAction(config.primaryCta.action)}>
-                {config.primaryCta.label}
+              <Button size="lg" onClick={() => go("work")}>
+                See my work
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5" />
               </Button>
             </Magnetic>
-            {config.primaryCta.action !== "projects" && (
-              <Button size="lg" variant="outline" onClick={() => runAction("projects")}>
-                Explore work
-              </Button>
-            )}
-            {config.primaryCta.action !== "cv" && (
-              <Button size="lg" variant="outline" onClick={() => runAction("cv")}>
-                <FileText size={16} /> CV
-              </Button>
-            )}
-            {config.primaryCta.action !== "book" && (
-              <Button size="lg" variant="ghost" onClick={openBooking}>
-                <Mail size={16} /> Get in touch
-              </Button>
-            )}
-          </motion.div>
-
-          <motion.div {...enter(0.75)} className="mt-10 border-t border-border pt-6">
-            <p className="t-eyebrow mb-3">Tailor this page for</p>
-            <AudienceSwitcher className="w-full max-w-[460px]" />
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={config.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="mt-3 text-sm text-muted"
-              >
-                {config.lens}
-              </motion.p>
-            </AnimatePresence>
+            <Button size="lg" variant="outline" onClick={() => go("contact")}>
+              <Mail size={16} /> Get in touch
+            </Button>
           </motion.div>
         </div>
 
         <PipelineCard className="w-full max-w-[560px] justify-self-center lg:justify-self-end" />
       </div>
 
-      {/* credentials + stats strip */}
       <motion.div {...enter(0.8)} className="container relative mt-16 md:mt-20">
         <div className="grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-[1.6fr_1fr]">
           <ul className="grid gap-px bg-border sm:grid-cols-3">
@@ -132,8 +94,8 @@ export function Hero() {
             ))}
           </ul>
           <dl className="grid grid-cols-3 gap-px bg-border">
-            {config.stats.map((s) => (
-              <div key={`${config.id}-${s.label}`} className="bg-bg/80 p-5 backdrop-blur">
+            {STATS.map((s) => (
+              <div key={s.label} className="bg-bg/80 p-5 backdrop-blur">
                 <dd className="text-2xl font-semibold tracking-tight">
                   <Counter value={s.value} />
                 </dd>
@@ -144,11 +106,7 @@ export function Hero() {
         </div>
       </motion.div>
 
-      <a
-        href="#work"
-        aria-label="Scroll to work"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-muted transition-colors hover:text-fg md:block"
-      >
+      <a href="#work" aria-label="Scroll to work" className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-muted transition-colors hover:text-fg md:block">
         <ArrowDown size={16} className="motion-safe:animate-bounce" />
       </a>
     </section>

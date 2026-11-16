@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
-import { useAudience } from "@/components/providers/audience-provider";
 import { timeline } from "@/data/profile";
 import { EASE, cn } from "@/lib/utils";
 
@@ -10,7 +9,6 @@ const TRACK_LABEL = { academic: "Academic", corporate: "Industry", startup: "Ven
 
 export function Timeline() {
   const ref = useRef<HTMLOListElement>(null);
-  const { audience } = useAudience();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 75%", "end 55%"] });
   const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
 
@@ -23,7 +21,6 @@ export function Timeline() {
         aria-hidden
       />
       {timeline.map((t, i) => {
-        const muted = audience !== "all" && audience !== t.track;
         return (
           <motion.li
             key={i}
@@ -32,9 +29,7 @@ export function Timeline() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: EASE }}
             className={cn(
-              "relative grid gap-1 pb-12 pl-8 transition-opacity duration-500 md:grid-cols-[120px_1fr] md:gap-0 md:pl-0",
-              muted && "opacity-40"
-            )}
+              "relative grid gap-1 pb-12 pl-8 transition-opacity duration-500 md:grid-cols-[120px_1fr] md:gap-0 md:pl-0")}
           >
             <span className="font-mono text-sm text-muted md:pr-8 md:text-right">{t.year}</span>
             <span

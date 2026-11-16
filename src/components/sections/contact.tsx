@@ -1,239 +1,116 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Briefcase, CalendarClock, Check, ChevronDown, FileText, GraduationCap, Linkedin, Loader2, Mail, Rocket } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowRight, Check, FileText, Github, Linkedin, Mail } from "lucide-react";
+import { useState } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
-import { useAudience, useSectionIndex } from "@/components/providers/audience-provider";
-import { useUI } from "@/components/providers/ui-provider";
-import type { InquiryType } from "@/lib/audience";
 import { profile } from "@/data/profile";
-import { EASE, cn } from "@/lib/utils";
-
-const INQUIRIES: {
-  id: InquiryType;
-  label: string;
-  icon: typeof Briefcase;
-  tone: string;
-  extra: { name: string; label: string; placeholder: string };
-  prompt: string;
-}[] = [
-  {
-    id: "recruiter",
-    label: "Recruiter / Job Opportunity",
-    icon: Briefcase,
-    tone: "corporate",
-    extra: { name: "company", label: "Company & role", placeholder: "Acme · Graduate Data Engineer" },
-    prompt: "Tell me about the team, the role and timelines.",
-  },
-  {
-    id: "academic",
-    label: "Academic Collaboration",
-    icon: GraduationCap,
-    tone: "academic",
-    extra: { name: "institution", label: "Institution / lab", placeholder: "University, group or lab" },
-    prompt: "What research question are you exploring?",
-  },
-  {
-    id: "client",
-    label: "Client Project / Startup Inquiry",
-    icon: Rocket,
-    tone: "startup",
-    extra: { name: "budget", label: "Budget range", placeholder: "e.g. £1–3k" },
-    prompt: "What does your business do, and what would success look like?",
-  },
-];
-
-type Status = "idle" | "sending" | "sent" | "error";
+import { sectionIndex } from "@/lib/sections";
 
 const field =
   "w-full rounded-2xl border border-border bg-bg/60 px-4 py-3.5 text-[15px] outline-none transition placeholder:text-muted/60 focus:border-fg/40 focus:bg-bg";
 
+const LINKS = [
+  { href: `mailto:${profile.email}`, label: profile.email, icon: Mail },
+  { href: profile.socials.linkedin, label: "linkedin.com/in/nomaer-rahman", icon: Linkedin },
+  { href: profile.socials.github, label: "github.com/nomaerrahman", icon: Github },
+  { href: profile.cvUrl, label: "Download my CV", icon: FileText },
+];
+
+/** One simple way to get in touch, for anyone. */
 export function Contact() {
-  const sectionIndex = useSectionIndex("contact");
-  const { config } = useAudience();
-  const { inquiry: requested, openBooking } = useUI();
-  const [inquiry, setInquiry] = useState<InquiryType>(config.inquiry);
-  const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
 
-  // Follow the audience switcher and any CTA that pre-selects an inquiry type.
-  useEffect(() => setInquiry(config.inquiry), [config.inquiry]);
-  useEffect(() => {
-    if (requested) setInquiry(requested);
-  }, [requested]);
-
-  const current = INQUIRIES.find((i) => i.id === inquiry)!;
-
-  /**
-   * Opens the visitor's email app with the message ready to send to my inbox.
-   * No server or third-party form service needed, and nothing is stored.
-   */
+  /** Opens the visitor's email app with the message ready to send. No backend, nothing stored. */
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
-    setError(null);
-    const extra = d[current.extra.name] ? `${current.extra.label}: ${d[current.extra.name]}\n` : "";
-    const subject = `${current.label}: ${d.name}`;
-    const body = `${d.message}\n\n—\n${d.name}\n${d.email}\n${extra}`;
-    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setStatus("sent");
+    const body = `${d.message}\n\n—\n${d.name}\n${d.email}`;
+    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(`Hello from ${d.name}`)}&body=${encodeURIComponent(body)}`;
+    setSent(true);
   }
 
   return (
     <section id="contact" className="section">
       <div className="container">
         <SectionHeading
-          index={sectionIndex}
+          index={sectionIndex("contact")}
           eyebrow="Contact"
           title={
             <>
-              Let&apos;s build <span className="font-serif font-normal italic" style={{ color: `hsl(var(--${current.tone}))` }}>something</span> together.
+              Let&apos;s <span className="font-serif font-normal italic text-accent">talk.</span>
             </>
           }
-          description="Pick what you're here for and the form adapts. It opens a ready-to-send email, or you can reach me directly."
+          description="A role, a project, an idea, or just a question about something I've built: send me a message."
         />
 
         <div className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
-          <Reveal className="flex flex-col gap-3">
-            {INQUIRIES.map((q) => {
-              const on = q.id === inquiry;
-              const Icon = q.icon;
-              return (
-                <button
-                  key={q.id}
-                  onClick={() => setInquiry(q.id)}
-                  className={cn(
-                    "flex items-center gap-4 rounded-3xl border p-5 text-left transition-all duration-500",
-                    on ? "bg-surface" : "border-border bg-surface/30 hover:bg-surface/60"
-                  )}
-                  style={on ? { borderColor: `hsl(var(--${q.tone}) / 0.5)` } : undefined}
-                >
-                  <span
-                    className="grid h-11 w-11 place-items-center rounded-2xl transition-colors"
-                    style={{
-                      background: on ? `hsl(var(--${q.tone}))` : "hsl(var(--elevated))",
-                      color: on ? "hsl(var(--bg))" : "hsl(var(--muted))",
-                    }}
+          <Reveal>
+            <ul className="space-y-1">
+              {LINKS.map(({ href, label, icon: Icon }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    target={href.startsWith("http") || href.endsWith(".pdf") ? "_blank" : undefined}
+                    rel="noreferrer"
+                    className="group flex items-center gap-4 rounded-2xl px-2 py-3 transition-colors hover:bg-surface/60"
                   >
-                    <Icon size={18} />
-                  </span>
-                  <span className="flex-1 font-medium">{q.label}</span>
-                  {on && <motion.span layoutId="inq-dot" className="h-2 w-2 rounded-full" style={{ background: `hsl(var(--${q.tone}))` }} />}
-                </button>
-              );
-            })}
-
-            <div className="mt-3 rounded-3xl border border-dashed border-border p-6">
-              <p className="font-medium">Prefer to reach me directly?</p>
-              <ul className="mt-4 space-y-3 text-sm">
-                <li>
-                  <a href={`mailto:${profile.email}`} className="flex items-center gap-2.5 text-muted transition-colors hover:text-fg">
-                    <Mail size={15} /> {profile.email}
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-elevated text-muted transition-colors group-hover:text-fg">
+                      <Icon size={17} />
+                    </span>
+                    <span className="text-[15px]">{label}</span>
                   </a>
                 </li>
-                <li>
-                  <a href={profile.socials.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-muted transition-colors hover:text-fg">
-                    <Linkedin size={15} /> linkedin.com/in/nomaer-rahman
-                  </a>
-                </li>
-                <li>
-                  <a href={profile.cvUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-muted transition-colors hover:text-fg">
-                    <FileText size={15} /> Download my CV
-                  </a>
-                </li>
-              </ul>
-              {profile.bookingUrl && (
-                <Button variant="outline" className="mt-5" onClick={openBooking}>
-                  <CalendarClock size={15} /> Book a call
-                </Button>
-              )}
-            </div>
+              ))}
+            </ul>
+            <p className="mt-6 px-2 text-sm text-muted">Based in {profile.location}.</p>
           </Reveal>
 
-          <Reveal delay={0.1} className="relative overflow-hidden rounded-3xl border border-border bg-surface/60 p-6 backdrop-blur md:p-10">
+          <Reveal delay={0.1} className="card p-6 md:p-8">
             <AnimatePresence mode="wait">
-              {status === "sent" ? (
+              {sent ? (
                 <motion.div
                   key="sent"
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.97 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex min-h-[420px] flex-col items-center justify-center text-center"
+                  className="flex min-h-[320px] flex-col items-center justify-center text-center"
                 >
-                  <motion.span
-                    initial={{ scale: 0, rotate: -45 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 15 }}
-                    className="grid h-16 w-16 place-items-center rounded-full text-bg"
-                    style={{ background: `hsl(var(--${current.tone}))` }}
-                  >
-                    <Check size={28} />
-                  </motion.span>
-                  <h3 className="mt-6 text-2xl font-semibold">Your email is ready.</h3>
-                  <p className="mt-2 max-w-sm text-muted">Your email app should have opened with the message filled in. Just press send. If nothing opened, email me at{" "}<a href={`mailto:${profile.email}`} className="text-fg underline underline-offset-4">{profile.email}</a>.</p>
-                  <Button variant="ghost" className="mt-6" onClick={() => setStatus("idle")}>
-                    Send another
+                  <span className="grid h-14 w-14 place-items-center rounded-full bg-accent text-accent-fg">
+                    <Check size={24} />
+                  </span>
+                  <h3 className="mt-5 text-xl font-semibold">Your email is ready.</h3>
+                  <p className="mt-2 max-w-sm text-muted">
+                    Your email app should have opened with the message filled in. If it didn&apos;t, email me at{" "}
+                    <a href={`mailto:${profile.email}`} className="text-fg underline underline-offset-4">
+                      {profile.email}
+                    </a>
+                    .
+                  </p>
+                  <Button variant="ghost" className="mt-5" onClick={() => setSent(false)}>
+                    Write another
                   </Button>
                 </motion.div>
               ) : (
                 <motion.form key="form" onSubmit={onSubmit} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="grid gap-4">
-                  <label className="grid gap-2">
-                    <span className="text-sm text-muted">Inquiry type</span>
-                    <span className="relative">
-                      <select value={inquiry} onChange={(e) => setInquiry(e.target.value as InquiryType)} className={cn(field, "appearance-none pr-10")} name="inquiryType">
-                        {INQUIRIES.map((q) => (
-                          <option key={q.id} value={q.id}>
-                            {q.label}
-                          </option>
-                        ))}
-                      </select>
-                      <ChevronDown size={16} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted" />
-                    </span>
-                  </label>
-
                   <div className="grid gap-4 sm:grid-cols-2">
                     <label className="grid gap-2">
                       <span className="text-sm text-muted">Name</span>
-                      <input required name="name" autoComplete="name" placeholder="Your name" className={field} />
+                      <input required name="name" autoComplete="name" className={field} />
                     </label>
                     <label className="grid gap-2">
                       <span className="text-sm text-muted">Email</span>
-                      <input required type="email" name="email" autoComplete="email" placeholder="you@company.com" className={field} />
+                      <input required type="email" name="email" autoComplete="email" className={field} />
                     </label>
                   </div>
-
-                  <AnimatePresence mode="wait">
-                    <motion.label
-                      key={current.extra.name}
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.3, ease: EASE }}
-                      className="grid gap-2"
-                    >
-                      <span className="text-sm text-muted">{current.extra.label}</span>
-                      <input name={current.extra.name} placeholder={current.extra.placeholder} className={field} />
-                    </motion.label>
-                  </AnimatePresence>
-
                   <label className="grid gap-2">
                     <span className="text-sm text-muted">Message</span>
-                    <textarea required name="message" rows={5} placeholder={current.prompt} className={cn(field, "resize-none")} minLength={10} />
+                    <textarea required name="message" rows={6} minLength={10} placeholder="What's on your mind?" className={`${field} resize-none`} />
                   </label>
-
-                  {/* honeypot */}
-                  <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
-
-                  {error && <p className="text-sm text-red-400">{error}</p>}
-
-                  <div className="flex items-center justify-between gap-4 pt-2">
-                    <p className="text-xs text-muted">Your details are only used to reply to you.</p>
-                    <Button type="submit" size="lg" disabled={status === "sending"}>
-                      {status === "sending" ? <Loader2 size={16} className="animate-spin" /> : null}
-                      {status === "sending" ? "Opening" : "Write email"}
-                      {status !== "sending" && <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />}
+                  <div className="flex justify-end pt-1">
+                    <Button type="submit" size="lg">
+                      Write email <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                     </Button>
                   </div>
                 </motion.form>

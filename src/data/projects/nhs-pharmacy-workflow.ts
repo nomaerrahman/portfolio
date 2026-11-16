@@ -11,7 +11,6 @@ const project: Project = {
   categories: ["Data Science & Analytics"],
   format: "Case study",
   featured: 4,
-  relevance: { corporate: 3, academic: 3, startup: 0 },
   stack: ["Python", "SQL (BigQuery API)", "pandas", "SimPy", "Tableau"],
   highlight: { value: "−59%", label: "95th-percentile wait" },
   metrics: [

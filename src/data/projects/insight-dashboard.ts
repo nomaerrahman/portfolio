@@ -10,7 +10,6 @@ const project: Project = {
   role: "Python & dashboard development",
   categories: ["Data Science & Analytics", "Full-Stack / Web"],
   format: "Web app",
-  relevance: { corporate: 2, academic: 1, startup: 1 },
   stack: ["Python", "Streamlit", "pandas", "NumPy", "Plotly"],
   highlight: { value: "6", label: "chart types, no code" },
   metrics: [

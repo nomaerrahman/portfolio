@@ -1,4 +1,4 @@
-import { ArrowUpRight, FileText, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, FileText, Github, GraduationCap, Linkedin, Mail } from "lucide-react";
 import { profile } from "@/data/profile";
 
 export function Footer() {
@@ -7,6 +7,7 @@ export function Footer() {
     { href: profile.socials.linkedin, label: "LinkedIn", icon: Linkedin },
     { href: `mailto:${profile.email}`, label: "Email", icon: Mail },
     { href: profile.cvUrl, label: "CV", icon: FileText },
+    { href: "/academic", label: "Coursework", icon: GraduationCap },
   ];
   return (
     <footer className="relative border-t border-border">
