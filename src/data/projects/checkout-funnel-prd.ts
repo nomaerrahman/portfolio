@@ -11,7 +11,6 @@ const project: Project = {
   categories: ["Data Science & Analytics"],
   format: "Analysis",
   featured: 3,
-  relevance: { corporate: 3, academic: 1, startup: 2 },
   stack: ["BigQuery SQL", "GA4", "Python", "statsmodels", "Looker Studio"],
   highlight: { value: "+16.9%", label: "revenue opportunity" },
   metrics: [

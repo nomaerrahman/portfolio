@@ -1,21 +1,21 @@
-import { SECTION_ORDER, type SectionId } from "@/lib/audience";
+import { SECTION_ORDER, type SectionId } from "@/lib/sections";
 import { Work } from "./work";
-import { Academic } from "./academic";
 import { Startup } from "./startup";
 import { About } from "./about";
+import { Next } from "./next";
 import { Beyond } from "./beyond";
 import { Contact } from "./contact";
 
 const SECTIONS: Record<SectionId, () => JSX.Element> = {
   work: Work,
-  academic: Academic,
   startup: Startup,
   about: About,
-  beyond: Beyond,
+  next: Next,
+  interests: Beyond,
   contact: Contact,
 };
 
-/** Renders sections in the stable page order defined in lib/audience.ts. */
+/** Renders the homepage sections in reading order (see lib/sections.ts). */
 export function SectionOrchestrator() {
   return (
     <>

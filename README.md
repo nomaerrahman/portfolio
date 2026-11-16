@@ -1,6 +1,6 @@
 # Nomaer Naiem · Portfolio
 
-A hybrid portfolio for three audiences (recruiters, academic committees, startup clients) built with
+Nom's portfolio: a builder and co-founder who ships data, AI-assisted and web products. Built with
 **Next.js 14 (App Router) · TypeScript · Tailwind CSS · Framer Motion · Lucide**.
 
 ## Run it
@@ -29,30 +29,23 @@ To add a project:
 
 Web projects with a `links.demo` URL get a click-to-load live preview on their case-study page.
 
-## Hero copy variants
-
-Three positioning options live in `src/data/hero.ts`. Preview any of them on the running site with
-`?hero=a`, `?hero=b` or `?hero=c`, then set `DEFAULT_HERO`.
-
 ## Beyond the Screen
 
 `src/data/hobbies.ts` holds the copy; each card's animation lives in `src/components/beyond/`.
 Animations run on hover/focus with a mouse, when scrolled into view on touch screens, and never with reduced motion.
 
-## How the "Audience View" works
+## Page structure
 
-`src/lib/audience.ts` defines one config per audience (`all`, `corporate`, `academic`, `startup`). Switching mode:
+The homepage answers five questions, in this order (`src/lib/sections.ts`):
 
-- **swaps the hero's primary CTA, stats and one-line "lens" note** (page order stays stable)
-- **re-ranks project cards** by each project's `relevance` score (0 = dimmed)
-- **fades the timeline** to the relevant track
-- **pre-selects the contact form's inquiry type**
-- **recolours the hero glow**
+1. **Who I am / what I do**: hero (`src/data/hero.ts`)
+2. **What I did**: Work (4 featured projects + archive) and HypeSpark
+3. **Who I am**: About (story, experience, skills, CV, link to `/academic`)
+4. **What I want to do**: Now & next (`src/data/now.ts`; keep it current)
+5. **Interests**: tech interests and sport/strategy cards
+6. **Contact**: one simple section
 
 All motion timings live in `src/components/motion/presets.ts`.
-
-Mode is shareable: `yoursite.com/?view=academic` opens straight into the academic view
-(handy to put in a cover letter or a PhD application).
 
 ## Structure
 
@@ -60,12 +53,12 @@ Mode is shareable: `yoursite.com/?view=academic` opens straight into the academi
 src/
 ├─ app/                 layout.tsx · page.tsx · globals.css (design tokens) · api/contact/route.ts
 ├─ components/
-│  ├─ providers/        audience · theme · ui (drawer / booking / inquiry state)
+│  ├─ providers/        theme
 │  ├─ motion/           presets · Reveal · Stagger · WordReveal · Magnetic · HoverLift · Counter
 │  ├─ effects/          HeroBackdrop · PipelineCard · PointerSpotlight · SpotlightCard
 │  ├─ beyond/           ActivityCard · ChessBoard · illustrations
-│  ├─ layout/           Navbar · AudienceSwitcher · Footer
-│  ├─ sections/         Hero · Work · Research · Startup · About · Beyond · Contact · BookingModal
+│  ├─ layout/           Navbar · Footer
+│  ├─ sections/         Hero · Work · Startup (HypeSpark) · About · Next · Beyond (Interests) · Contact · Academic
 │  ├─ work/             ProjectCard · ProjectCover · CodeBlock
 │  ├─ projects/         ProjectsArchive · ProjectRow · CaseToc · Figure · LivePreview
 │  ├─ research/         PublicationRow · CiteButton · PdfModal
@@ -74,7 +67,7 @@ src/
 ├─ app/projects/        page.tsx (archive) · [slug]/page.tsx (case study)
 ├─ data/projects/       one file per project + index.ts
 ├─ data/                research.ts · startup.ts · profile.ts · hero.ts · hobbies.ts   ← edit these
-└─ lib/                 types.ts · audience.ts · utils.ts
+└─ lib/                 types.ts · sections.ts · projects.ts · utils.ts
 ```
 
 ## Content sources
@@ -89,7 +82,7 @@ src/
 ## Design tokens
 
 Colours live as HSL variables in `globals.css` (`.dark` is the default; light mode via the toggle).
-Each audience has its own tone: `--corporate` (azure), `--academic` (amber), `--startup` (ember).
+Category tones: `--corporate` (azure), `--academic` (amber), `--startup` (ember), `--web` (green).
 
 ## Accessibility & performance
 

@@ -19,9 +19,9 @@ export const profile = {
   /** Optional Cal.com / Calendly link. When unset, "Get in touch" buttons go to the contact section. */
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL || null,
   philosophy: [
-    "Rigour is a feature. If a number matters, it should be tested, sourced and explainable.",
+    "Start with the problem, not the tool. Technology is only worth it if someone's day gets better.",
     "Ship small, learn fast. The second version is always better than the first idea.",
-    "Build for the person reading the dashboard, not the person who built it.",
+    "If a number matters, it should be tested, sourced and explainable.",
   ],
 };
 

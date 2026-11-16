@@ -3,14 +3,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, BarChart3, Check, Compass, MonitorSmartphone, QrCode } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useSectionIndex } from "@/components/providers/audience-provider";
+import { sectionIndex } from "@/lib/sections";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { Magnetic } from "@/components/motion/magnetic";
 import { ease } from "@/components/motion/presets";
-import { useUI } from "@/components/providers/ui-provider";
 import { startup, type Practice } from "@/data/startup";
 import { cn } from "@/lib/utils";
 
@@ -57,8 +56,6 @@ function PracticePreview({ practice }: { practice: Practice }) {
 }
 
 export function Startup() {
-  const sectionIndex = useSectionIndex("startup");
-  const { openBooking } = useUI();
   const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(true);
   const practice = startup.practices[active];
@@ -78,8 +75,8 @@ export function Startup() {
       />
       <div className="container relative">
         <SectionHeading
-          index={sectionIndex}
-          eyebrow="Venture · Co-founder"
+          index={sectionIndex("startup")}
+          eyebrow="What I'm building"
           title={
             <>
               <span className="text-startup">{startup.name}</span>
@@ -211,9 +208,11 @@ export function Startup() {
                 </Button>
               </a>
             </Magnetic>
-            <Button variant="outline" size="lg" onClick={openBooking}>
-              Get in touch
-            </Button>
+            <a href="#contact">
+              <Button variant="outline" size="lg">
+                Get in touch
+              </Button>
+            </a>
           </Reveal>
         </div>
       </div>

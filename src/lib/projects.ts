@@ -1,5 +1,5 @@
 import { projects } from "@/data/projects";
-import type { Audience, Project, ProjectCategory } from "./types";
+import type { Project, ProjectCategory } from "./types";
 
 export const CATEGORIES: ProjectCategory[] = ["Data Engineering", "Data Science & Analytics", "Full-Stack / Web", "Client Work"];
 
@@ -11,17 +11,11 @@ export const getProject = (slug: string) => projects.find((p) => p.slug === slug
 
 export const projectYear = (p: Project) => p.date.slice(0, 4);
 
-/** Homepage selection: curated `featured` order for "All", relevance for audience views. */
-export function getFeatured(audience: Audience, count = 4): Project[] {
-  if (audience === "all") {
-    return projects
-      .filter((p) => p.featured !== undefined)
-      .sort((a, b) => (a.featured ?? 99) - (b.featured ?? 99))
-      .slice(0, count);
-  }
-  return [...projects]
-    .filter((p) => p.relevance[audience] > 0)
-    .sort((a, b) => b.relevance[audience] - a.relevance[audience] || (a.featured ?? 99) - (b.featured ?? 99) || byNewest(a, b))
+/** Homepage highlights, in the curated `featured` order. */
+export function getFeatured(count = 4): Project[] {
+  return projects
+    .filter((p) => p.featured !== undefined)
+    .sort((a, b) => (a.featured ?? 99) - (b.featured ?? 99))
     .slice(0, count);
 }
 

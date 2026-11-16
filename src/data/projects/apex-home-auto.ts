@@ -11,7 +11,6 @@ const project: Project = {
   categories: ["Client Work", "Full-Stack / Web"],
   format: "Client template",
   featured: 5,
-  relevance: { corporate: 2, academic: 0, startup: 3 },
   stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "Fontsource"],
   highlight: { value: "4", label: "industries in one codebase" },
   metrics: [

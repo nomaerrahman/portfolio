@@ -4,22 +4,19 @@ import { GraduationCap } from "lucide-react";
 import { useState } from "react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
-import { useSectionIndex } from "@/components/providers/audience-provider";
 import { WorkCard } from "@/components/academic/work-card";
 import { PdfModal } from "@/components/academic/pdf-modal";
 import { degrees } from "@/data/academic";
 
 /** Degrees, then each degree's coursework as readable cards. */
 export function Academic() {
-  const sectionIndex = useSectionIndex("academic");
   const [reading, setReading] = useState<{ title: string; pdfUrl: string } | null>(null);
 
   return (
     <section id="academic" className="section">
       <div className="container">
         <SectionHeading
-          index={sectionIndex}
-          eyebrow="Academic"
+          eyebrow="Education"
           title={
             <>
               Degrees <span className="font-serif font-normal italic text-academic">and coursework.</span>

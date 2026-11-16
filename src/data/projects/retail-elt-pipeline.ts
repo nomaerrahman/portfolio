@@ -11,7 +11,6 @@ const project: Project = {
   categories: ["Data Engineering", "Data Science & Analytics"],
   format: "Case study",
   featured: 1,
-  relevance: { corporate: 3, academic: 2, startup: 1 },
   stack: ["Python", "SQL", "dbt", "DuckDB", "GitHub Actions", "Power BI"],
   highlight: { value: "42", label: "dbt data tests" },
   metrics: [

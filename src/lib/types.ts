@@ -1,5 +1,4 @@
-export type Audience = "all" | "corporate" | "academic" | "startup";
-export type Track = Exclude<Audience, "all">;
+export type Track = "corporate" | "academic" | "startup";
 
 export type ProjectCategory = "Data Engineering" | "Data Science & Analytics" | "Full-Stack / Web" | "Client Work";
 export type ProjectFormat = "Case study" | "Analysis" | "Web app" | "Client template" | "Open source";
@@ -45,8 +44,6 @@ export interface Project {
   format: ProjectFormat;
   /** Lower numbers appear first on the homepage "All" view. Omit to keep it archive-only. */
   featured?: number;
-  /** How relevant this is to each audience (0-3). Drives ranking. */
-  relevance: Record<Track, number>;
   stack: string[];
   highlight: Metric;
   metrics: Metric[];

@@ -5,7 +5,7 @@ import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { ActivityCard } from "@/components/beyond/activity-card";
 import { ChessBoard } from "@/components/beyond/chess-board";
 import { BadmintonArt, CalisthenicsArt, FifaArt, FootballArt, SwimmingArt } from "@/components/beyond/illustrations";
-import { useSectionIndex } from "@/components/providers/audience-provider";
+import { sectionIndex } from "@/lib/sections";
 import { hobbies, type HobbyId } from "@/data/hobbies";
 
 const byId = (id: HobbyId) => hobbies.find((h) => h.id === id)!;
@@ -18,22 +18,21 @@ const byId = (id: HobbyId) => hobbies.find((h) => h.id === id)!;
  *   [ Calisthenics (2) ][ FIFA (2) ]
  */
 export function Beyond() {
-  const sectionIndex = useSectionIndex("beyond");
   const discipline = hobbies.filter((h) => h.group === "Discipline").length;
   const strategy = hobbies.length - discipline;
 
   return (
-    <section id="beyond" className="section">
+    <section id="interests" className="section">
       <div className="container">
         <SectionHeading
-          index={sectionIndex}
-          eyebrow="Beyond the screen"
+          index={sectionIndex("interests")}
+          eyebrow="Interests"
           title={
             <>
               Discipline on the pitch, <span className="font-serif font-normal italic text-academic">strategy at the board.</span>
             </>
           }
-          description="What I do away from the keyboard, and what each one has taught me about how I work. Hover a card (or scroll on mobile) to bring it to life."
+          description="In tech, I'm drawn to AI-assisted building, data products and automation for small businesses. Away from the keyboard, it's sport and strategy games, and what each one teaches me about how I work."
         >
           <div className="flex gap-8">
             <div>
@@ -46,6 +45,14 @@ export function Beyond() {
             </div>
           </div>
         </SectionHeading>
+
+        <ul className="mb-8 flex flex-wrap gap-2" aria-label="Interests in tech">
+          {["AI-assisted development", "Data products", "Automation for small businesses", "Startups & product", "Analytics engineering"].map((t) => (
+            <li key={t} className="rounded-full border border-border bg-surface/60 px-3.5 py-1.5 text-sm">
+              {t}
+            </li>
+          ))}
+        </ul>
 
         <Stagger className="grid auto-rows-auto gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.07}>
           <StaggerItem className="sm:col-span-2 lg:row-span-2">

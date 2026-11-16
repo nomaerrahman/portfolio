@@ -1,38 +1,10 @@
 import type { TextSegment } from "@/components/motion/kinetic-text";
 
-export interface HeroVariant {
-  id: "a" | "b" | "c";
-  name: string;
-  headline: TextSegment[];
-  lead: string;
-}
-
-/**
- * Three positioning options. Pick the default below, or preview any of them
- * live with ?hero=a, ?hero=b or ?hero=c on the URL.
- */
-export const HERO_VARIANTS: HeroVariant[] = [
-  {
-    id: "a",
-    name: "Builder by instinct",
-    headline: ["Data engineer by trade,", { accent: "builder" }, "by instinct."],
-    lead:
-      "I'm Nom, a data analyst and Junior Data Engineer completing an MSc in Data Science and Analytics at Brunel University of London. I build the pipelines, dashboards and web apps that turn raw data into decisions people can trust.",
-  },
-  {
-    id: "b",
-    name: "Data meets the web",
-    headline: ["I build where", { accent: "data" }, "meets the web."],
-    lead:
-      "Nom here. I design data pipelines, ship full-stack products and study data science at Brunel University of London, with one foot in engineering and one in the lab.",
-  },
-  {
-    id: "c",
-    name: "Raw data to real products",
-    headline: ["From raw data", "to", { accent: "real products." }],
-    lead:
-      "I'm Nom: data engineer, MSc researcher and web developer. I care about clean pipelines, honest models and interfaces people actually enjoy using.",
-  },
-];
-
-export const DEFAULT_HERO: HeroVariant["id"] = "a";
+/** One clear positioning: who I am and what I do. */
+export const hero = {
+  greeting: "Hi, I'm Nom",
+  roles: ["Data Engineer", "AI-native Builder", "Co-founder, HypeSpark"],
+  headline: ["I build software that", { accent: "solves real problems" }, "for businesses."] as TextSegment[],
+  lead:
+    "I turn messy business problems into working products: data pipelines, analytics and web apps. AI is part of how I design, code and test, so ideas get to real users quickly. I co-founded HypeSpark, and I'm a Junior Data Engineer at Carrot Soft while finishing my MSc in Data Science and Analytics.",
+};
