@@ -1,6 +1,6 @@
 # Nomaer Naiem · Portfolio
 
-Nom's portfolio: a builder and co-founder who ships data, AI-assisted and web products. Built with
+Nom's portfolio: a data engineer, builder and founder who ships data, AI-powered and web products. Built with
 **Next.js 14 (App Router) · TypeScript · Tailwind CSS · Framer Motion · Lucide**.
 
 ## Run it
@@ -39,7 +39,7 @@ Animations run on hover/focus with a mouse, when scrolled into view on touch scr
 The homepage answers five questions, in this order (`src/lib/sections.ts`):
 
 1. **Who I am / what I do**: hero (`src/data/hero.ts`)
-2. **What I did**: Work (4 featured projects + archive) and HypeSpark
+2. **What I did**: Work (4 featured projects + archive) and Atafol
 3. **Who I am**: About (story, experience, skills, CV, link to `/academic`)
 4. **What I want to do**: Now & next (`src/data/now.ts`; keep it current)
 5. **Interests**: tech interests and sport/strategy cards
@@ -58,7 +58,7 @@ src/
 │  ├─ effects/          HeroBackdrop · PipelineCard · PointerSpotlight · SpotlightCard
 │  ├─ beyond/           ActivityCard · ChessBoard · illustrations
 │  ├─ layout/           Navbar · Footer
-│  ├─ sections/         Hero · Work · Startup (HypeSpark) · About · Next · Beyond (Interests) · Contact · Academic
+│  ├─ sections/         Hero · Work · Startup (Atafol) · About · Next · Beyond (Interests) · Contact · Academic
 │  ├─ work/             ProjectCard · ProjectCover · CodeBlock
 │  ├─ projects/         ProjectsArchive · ProjectRow · CaseToc · Figure · LivePreview
 │  ├─ research/         PublicationRow · CiteButton · PdfModal
@@ -75,7 +75,7 @@ src/
 - **CV:** `public/Nomaer_Naiem_CV.pdf`. Profile, timeline and skills in `src/data/profile.ts` mirror it; update both together.
 - **Projects:** `src/data/projects/` (one file each).
 - **Coursework:** `src/data/academic.ts` + PDFs in `public/academic/`.
-- **Venture:** `src/data/startup.ts` (HypeSpark).
+- **Venture:** `src/data/startup.ts` (Atafol).
 - **Contact:** the form opens a ready-to-send email to the address in `profile.ts`; no backend needed.
 - **Optional:** set `NEXT_PUBLIC_BOOKING_URL` to add a "Book a call" calendar.
 

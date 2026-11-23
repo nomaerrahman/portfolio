@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, BarChart3, Check, Compass, MonitorSmartphone, QrCode } from "lucide-react";
+import { ArrowUpRight, Check, Layers, ShieldCheck, Workflow } from "lucide-react";
 import { useEffect, useState } from "react";
 import { sectionIndex } from "@/lib/sections";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -13,10 +13,10 @@ import { ease } from "@/components/motion/presets";
 import { startup, type Practice } from "@/data/startup";
 import { cn } from "@/lib/utils";
 
-const ICONS = { strategy: Compass, experience: MonitorSmartphone, growth: QrCode, operations: BarChart3 } as const;
+const ICONS = { automation: Workflow, systems: Layers, intelligence: ShieldCheck } as const;
 const host = startup.url.replace(/^https?:\/\//, "");
 
-/** Browser-framed preview of a practice area, linking to the real service pages on the HypeSpark site. */
+/** Browser-framed preview of a service pillar, linking to its section on the live Atafol site. */
 function PracticePreview({ practice }: { practice: Practice }) {
   const Icon = ICONS[practice.id];
   return (
@@ -37,9 +37,9 @@ function PracticePreview({ practice }: { practice: Practice }) {
         <p className="mt-3 text-muted">{practice.description}</p>
         <ul className="mt-auto space-y-2 pt-8">
           {practice.services.map((s) => (
-            <li key={s.slug}>
+            <li key={s.name}>
               <a
-                href={`${startup.url}/services/${s.slug}`}
+                href={`${startup.url}${s.href}`}
                 target="_blank"
                 rel="noreferrer"
                 className="group flex items-center justify-between rounded-2xl border border-border bg-bg/60 px-4 py-3 text-sm transition-colors hover:border-startup/50"
@@ -204,7 +204,7 @@ export function Startup() {
             <Magnetic>
               <a href={startup.url} target="_blank" rel="noreferrer">
                 <Button variant="accent" size="lg">
-                  Visit HypeSpark <ArrowUpRight size={16} />
+                  Visit {startup.name} <ArrowUpRight size={16} />
                 </Button>
               </a>
             </Magnetic>

@@ -8,7 +8,7 @@ export const NAV_SECTIONS: SectionId[] = ["work", "startup", "about", "contact"]
 
 export const SECTION_LABELS: Record<SectionId, string> = {
   work: "Work",
-  startup: "HypeSpark",
+  startup: "Atafol",
   about: "About",
   next: "Now & next",
   interests: "Interests",

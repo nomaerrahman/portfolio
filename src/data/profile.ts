@@ -6,7 +6,7 @@ export const profile = {
   fullName: "Nomaer Ibne Rahman Naiem",
   shortName: "Nom",
   handle: "nomaerrahman",
-  headline: "Data Analyst · Data Engineer",
+  headline: "Data Analyst · Data Engineer · Forward Deployed Engineer",
   degree: "MSc Data Science and Analytics",
   university: "Brunel University of London",
   location: "London, UK",
@@ -35,17 +35,17 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: "2022–23",
-    title: "Educational Technology Analyst",
+    title: "Educational Technology Analyst (IT Support)",
     org: "Brunel University London",
     track: "corporate",
     description: "Supported the migration of 5,000+ users to a new learning platform with zero data loss, resolved 300+ support tickets and trained 50+ academic staff.",
   },
   {
-    year: "2023–now",
-    title: "Healthcare roles at Boots UK",
-    org: "Customer Advisor → Healthcare Specialist → Pharmacy Dispenser",
+    year: "2023–26",
+    title: "Customer Advisor",
+    org: "Boots UK · Uxbridge & Pinner",
     track: "corporate",
-    description: "Dispensing NHS prescriptions under pharmacist supervision and advising on medicines under NHS compliance rules: the operational context behind my NHS analytics projects.",
+    description: "Served a high volume of customers daily, reading their needs and buying behaviour to recommend health, beauty and over-the-counter products within NHS compliance rules, and fed customer trends back to the store team.",
   },
   {
     year: "2025–27",
@@ -63,10 +63,17 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: "2026",
-    title: "Co-founded HypeSpark",
-    org: "Digital transformation studio · London",
+    title: "Founded Atafol",
+    org: "Technology consultancy · London",
     track: "startup",
-    description: "A London-based digital transformation studio for UK small and mid-sized businesses. Shared ownership of product direction, technical decisions and go-to-market planning; set up the engineering workflow for its first product, BetterShelf.",
+    description: "A UK consultancy that designs and builds custom software, workflow automation and private AI. Designed its four-stage delivery model and built the website, with interactive workflow demos and a starting-point assessment.",
+  },
+  {
+    year: "2026",
+    title: "Built JobPilot",
+    org: "AI job application platform",
+    track: "startup",
+    description: "A full-stack assistant (Next.js, FastAPI, PostgreSQL) that finds jobs through official APIs, scores fit 0–100, tailors the CV and cover letter, and applies only after approval.",
   },
   {
     year: "2026–now",
@@ -75,29 +82,32 @@ export const timeline: TimelineEntry[] = [
     track: "corporate",
     description: "Built automated ETL workflows and dashboards that cut reporting time by 35% and improved data accuracy by 25%, analysing 63K+ marketing and business records with Python, SQL, R and Power BI.",
   },
+  {
+    year: "2026–now",
+    title: "Trainee Dispenser",
+    org: "Boots UK · London",
+    track: "corporate",
+    description: "Dispensing NHS prescriptions under pharmacist supervision, following standard operating procedures and patient confidentiality: the operational context behind my NHS analytics projects.",
+  },
 ];
 
 /** Skills exactly as grouped on the CV. */
 export const skills: SkillGroup[] = [
   {
-    group: "Data Analysis & BI",
-    items: ["SQL (CTEs, window functions)", "Power BI (DAX, Power Query)", "Tableau", "Looker Studio", "Excel", "Data modelling (star schema)", "KPI design", "Data storytelling"],
+    group: "Languages",
+    items: ["Python (pandas, scikit-learn, statsmodels, Prophet)", "SQL (CTEs, window functions)", "TypeScript", "JavaScript", "R", "Java"],
   },
   {
-    group: "Statistics & ML",
-    items: ["Python (pandas, scikit-learn, statsmodels, Prophet)", "R", "Regression", "Hypothesis testing", "A/B testing & power analysis", "Time-series forecasting", "Discrete-event simulation (SimPy)"],
+    group: "Analytics & BI",
+    items: ["Power BI (DAX, Power Query)", "Tableau", "Looker Studio", "Excel", "KPI design", "Data modelling (star schema)", "Forecasting", "A/B testing"],
   },
   {
-    group: "Data Engineering",
-    items: ["ETL / ELT pipelines", "dbt", "DuckDB", "Google BigQuery", "Apache Spark (MLlib)", "Data quality testing", "Git & GitHub Actions (CI/CD)"],
+    group: "Engineering & Deployment",
+    items: ["ETL / ELT pipelines", "dbt", "DuckDB", "Google BigQuery", "PostgreSQL", "FastAPI", "Next.js", "React", "Node.js", "Streamlit", "REST APIs", "LLM integration", "GitHub Actions (CI/CD)", "Docker", "Vercel"],
   },
   {
-    group: "Business & Delivery",
-    items: ["Requirements gathering", "User stories", "Process mapping", "PRDs", "RICE & MoSCoW", "Business cases", "Agile / Scrum", "UK GDPR"],
-  },
-  {
-    group: "Web & Platforms",
-    items: ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Streamlit", "Java", "Microsoft 365 & Power Platform"],
+    group: "Support & Delivery",
+    items: ["Requirements gathering", "Solution design", "Process mapping", "Stakeholder management", "Agile / Scrum", "IT troubleshooting & tickets", "User training", "Microsoft 365 & SharePoint", "UK GDPR"],
   },
 ];
 

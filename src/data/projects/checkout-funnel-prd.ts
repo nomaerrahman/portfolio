@@ -10,7 +10,7 @@ const project: Project = {
   role: "Product analytics",
   categories: ["Data Science & Analytics"],
   format: "Analysis",
-  featured: 3,
+  featured: 5,
   stack: ["BigQuery SQL", "GA4", "Python", "statsmodels", "Looker Studio"],
   highlight: { value: "+16.9%", label: "revenue opportunity" },
   metrics: [

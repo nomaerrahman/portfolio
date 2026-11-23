@@ -9,12 +9,12 @@ import { Footer } from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-two-gray-53.vercel.app"),
-  title: `${profile.name} · Builder, Data Engineer & Co-founder`,
+  title: `${profile.name} · Data Engineer, Builder & Founder`,
   description:
-    "Nomaer Naiem (Nom): a London-based builder and co-founder of HypeSpark. Data engineer shipping data, AI-assisted and web products for businesses.",
+    "Nomaer Naiem (Nom): a London-based data engineer and founder of Atafol, shipping data, AI-powered and web products for businesses.",
   openGraph: {
-    title: `${profile.name} · Builder, Data Engineer & Co-founder`,
-    description: "Data, analytics and web products I've built and shipped, plus HypeSpark.",
+    title: `${profile.name} · Data Engineer, Builder & Founder`,
+    description: "Data, analytics and AI-powered products I've built and shipped, plus Atafol.",
     type: "website",
   },
 };

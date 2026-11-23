@@ -13,7 +13,7 @@ const project: Project = {
   stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion"],
   highlight: { value: "1 file", label: "to add a project" },
   metrics: [
-    { value: "12", label: "Case-study pages" },
+    { value: "13", label: "Case-study pages" },
     { value: "1 file", label: "Per new project" },
     { value: "SSG", label: "Static case-study pages" },
   ],

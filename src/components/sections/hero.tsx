@@ -14,7 +14,7 @@ import { profile } from "@/data/profile";
 import { allProjects } from "@/lib/projects";
 
 const CREDENTIALS = [
-  { icon: Rocket, label: "Co-founder", org: "HypeSpark" },
+  { icon: Rocket, label: "Founder", org: "Atafol" },
   { icon: Briefcase, label: "Junior Data Engineer", org: "Carrot Soft" },
   { icon: GraduationCap, label: profile.degree, org: profile.university },
 ];

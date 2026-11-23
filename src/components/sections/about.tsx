@@ -22,7 +22,7 @@ export function About() {
               A builder <span className="font-serif font-normal italic text-muted">at heart.</span>
             </>
           }
-          description="I studied computer science, learned to make data trustworthy in industry and in NHS pharmacy work, and now build products of my own with HypeSpark. The thread through all of it: I like taking a messy problem and shipping something that fixes it."
+          description="I studied computer science, learned to make data trustworthy in industry and in NHS pharmacy work, and now build products of my own: Atafol and JobPilot. The thread through all of it: I like taking a messy problem and shipping something that fixes it."
         />
 
         <Stagger className="mb-20 grid gap-4 md:grid-cols-3">

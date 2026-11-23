@@ -10,7 +10,7 @@ const project: Project = {
   role: "Data science & forecasting",
   categories: ["Data Science & Analytics"],
   format: "Case study",
-  featured: 2,
+  featured: 3,
   stack: ["Python", "pandas", "statsmodels", "Prophet", "Streamlit", "Altair"],
   highlight: { value: "1.6%", label: "average back-test error" },
   metrics: [

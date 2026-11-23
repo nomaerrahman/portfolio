@@ -6,6 +6,7 @@ import type { Project } from "@/lib/types";
  *   2. Put images in /public/projects/<slug>/.
  *   3. Import it below. Set `featured` (1 = first) to show it on the homepage.
  */
+import jobpilot from "./jobpilot";
 import retailEltPipeline from "./retail-elt-pipeline";
 import gpDemandForecasting from "./gp-demand-forecasting";
 import checkoutFunnelPrd from "./checkout-funnel-prd";
@@ -20,6 +21,7 @@ import ukTaxCalculator from "./uk-tax-calculator";
 import portfolio from "./portfolio";
 
 export const projects: Project[] = [
+  jobpilot,
   retailEltPipeline,
   gpDemandForecasting,
   checkoutFunnelPrd,

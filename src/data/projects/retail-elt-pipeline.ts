@@ -10,7 +10,7 @@ const project: Project = {
   role: "Data engineering & analytics",
   categories: ["Data Engineering", "Data Science & Analytics"],
   format: "Case study",
-  featured: 1,
+  featured: 2,
   stack: ["Python", "SQL", "dbt", "DuckDB", "GitHub Actions", "Power BI"],
   highlight: { value: "42", label: "dbt data tests" },
   metrics: [
